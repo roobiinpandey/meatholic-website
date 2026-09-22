@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meatholic Admin | Reservations</title>
+  <title>Meatholic Admin</title>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="stylesheet" href="admin.css">
 </head>
@@ -12,7 +12,6 @@
     const SUPABASE_URL = "https://cjgybbaofhddmijbviyv.supabase.co";
     const SUPABASE_ANON_KEY = "sb_publishable_FPD8V7uI7g9gqSec7fL5Ug_yKqGeJg5";
   </script>
-
   <div id="login-screen">
     <div class="login-box">
       <div class="logo"><span class="wagyu">和牛</span> MEATHOLIC</div>
@@ -23,26 +22,28 @@
         <button type="submit">Sign In</button>
       </form>
       <div class="login-error" id="login-error"></div>
-      <div class="setup-note">Log in with the email and password you created in Supabase Authentication.</div>
+      <div class="setup-note">Use the email/password from Supabase Authentication.</div>
     </div>
   </div>
-
   <div id="dashboard">
     <aside class="sidebar">
       <div class="brand"><span class="wagyu">和牛</span> <span>MEATHOLIC</span></div>
-      <div class="nav-item active" onclick="showView('reservations')"><span>📋</span> <span>Reservations</span></div>
-      <div class="nav-item" onclick="showView('settings')"><span>⚙️</span> <span>Settings</span></div>
-      <div class="nav-item" onclick="window.open('index.html','_blank')"><span>🌐</span> <span>Website</span></div>
+      <div class="nav-item active" data-view="reservations" onclick="showView('reservations')"><span>📋</span> <span>Reservations</span></div>
+      <div class="nav-item" data-view="menu" onclick="showView('menu')"><span>🍽️</span> <span>Menu</span></div>
+      <div class="nav-item" data-view="gallery" onclick="showView('gallery')"><span>🖼️</span> <span>Gallery</span></div>
+      <div class="nav-item" data-view="specials" onclick="showView('specials')"><span>⭐</span> <span>Specials</span></div>
+      <div class="nav-item" data-view="settings" onclick="showView('settings')"><span>⚙️</span> <span>Settings</span></div>
+      <div class="nav-item" onclick="window.open('/','_blank')"><span>🌐</span> <span>Website</span></div>
       <div class="sidebar-footer">
         <p id="admin-email"></p>
         <button onclick="logout()">Sign Out</button>
       </div>
     </aside>
     <main class="main">
-      <div id="view-reservations">
+      <div id="view-reservations" class="view">
         <div class="topbar">
           <div><h1>Reservations</h1><div class="date" id="current-date"></div></div>
-          <button class="btn" onclick="openAddModal()">+ New Reservation</button>
+          <button class="btn" onclick="openResModal()">+ New</button>
         </div>
         <div class="stats">
           <div class="stat-card today"><div class="label">Today</div><div class="value" id="stat-today">—</div></div>
@@ -60,65 +61,62 @@
             <option value="completed">Completed</option>
             <option value="no_show">No-show</option>
           </select>
-          <input type="text" id="filter-search" placeholder="Search name / phone..." oninput="debounceSearch()" style="min-width:180px">
-          <button class="btn-outline btn" onclick="exportCSV()">Export CSV</button>
-          <button class="btn-outline btn" onclick="loadReservations()">↻ Refresh</button>
+          <input type="text" id="filter-search" placeholder="Search…" oninput="debounceSearch()" style="min-width:160px">
+          <button class="btn-outline btn" onclick="exportCSV()">Export</button>
+          <button class="btn-outline btn" onclick="loadReservations()">↻</button>
         </div>
         <div class="table-wrap">
-          <div class="loading" id="loading">Loading…</div>
+          <div class="loading" id="res-loading">Loading…</div>
           <table id="res-table" style="display:none">
-            <thead><tr><th>Date & Time</th><th>Guest</th><th>Phone</th><th>Party</th><th>Status</th><th>Source</th><th>Notes</th><th>Actions</th></tr></thead>
+            <thead><tr><th>Date & Time</th><th>Guest</th><th>Phone</th><th>Party</th><th>Status</th><th>Notes</th><th>Actions</th></tr></thead>
             <tbody id="reservations-body"></tbody>
           </table>
-          <div class="empty-state" id="empty-state" style="display:none">No reservations found.</div>
+          <div class="empty-state" id="res-empty" style="display:none">No reservations found.</div>
         </div>
       </div>
-      <div id="view-settings" style="display:none">
-        <div class="topbar"><h1>Settings</h1></div>
-        <div class="stat-card" style="max-width:480px">
-          <div class="label">Max covers per time slot</div>
-          <input type="number" id="setting-max-covers" min="1" max="200" style="width:100px;margin:0.5rem 0;background:#0f0f0f;border:1px solid var(--border);color:white;padding:0.5rem;border-radius:4px">
-          <div class="label" style="margin-top:1rem">Restaurant WhatsApp number (digits only)</div>
-          <input type="text" id="setting-whatsapp" placeholder="971501262191" style="width:100%;margin:0.5rem 0;background:#0f0f0f;border:1px solid var(--border);color:white;padding:0.5rem;border-radius:4px">
-          <button class="btn" style="margin-top:1rem" onclick="saveSettings()">Save Settings</button>
-          <p id="settings-msg" style="margin-top:0.8rem;font-size:0.85rem;color:#2a9d8f;display:none">Saved!</p>
+      <div id="view-menu" class="view" style="display:none">
+        <div class="topbar">
+          <div><h1>Menu / Dishes</h1><div class="date">Add, edit or hide dishes on the website</div></div>
+          <button class="btn" onclick="openDishModal()">+ Add Dish</button>
+        </div>
+        <div class="card-grid" id="dishes-grid"></div>
+        <div class="empty-state" id="dishes-empty" style="display:none">No dishes yet. Click “+ Add Dish”.</div>
+      </div>
+      <div id="view-gallery" class="view" style="display:none">
+        <div class="topbar">
+          <div><h1>Gallery</h1><div class="date">Website gallery images</div></div>
+          <button class="btn" onclick="openGalleryModal()">+ Add Image</button>
+        </div>
+        <div class="card-grid gallery-grid" id="gallery-grid"></div>
+        <div class="empty-state" id="gallery-empty" style="display:none">No gallery images yet.</div>
+      </div>
+      <div id="view-specials" class="view" style="display:none">
+        <div class="topbar">
+          <div><h1>Specials & Feasts</h1><div class="date">Promotions and packages</div></div>
+          <button class="btn" onclick="openSpecialModal()">+ Add Special</button>
+        </div>
+        <div class="card-grid" id="specials-grid"></div>
+        <div class="empty-state" id="specials-empty" style="display:none">No specials yet.</div>
+      </div>
+      <div id="view-settings" class="view" style="display:none">
+        <div class="topbar"><h1>Website Settings</h1></div>
+        <div class="settings-form">
+          <div class="form-group"><label>Restaurant Name</label><input type="text" id="set-name"></div>
+          <div class="form-group"><label>Tagline</label><input type="text" id="set-tagline"></div>
+          <div class="form-group"><label>Subtitle</label><input type="text" id="set-subtitle"></div>
+          <div class="form-group"><label>Phone</label><input type="text" id="set-phone"></div>
+          <div class="form-group"><label>WhatsApp (digits)</label><input type="text" id="set-whatsapp"></div>
+          <div class="form-group"><label>Address</label><input type="text" id="set-address"></div>
+          <div class="form-group"><label>Hours text</label><input type="text" id="set-hours"></div>
+          <div class="form-group"><label>Instagram URL</label><input type="url" id="set-instagram"></div>
+          <div class="form-group"><label>Max covers per slot</label><input type="number" id="set-max-covers" min="1" max="200"></div>
+          <button class="btn" onclick="saveAllSettings()">Save Settings</button>
+          <p id="settings-msg" class="success-msg" style="display:none">Saved!</p>
         </div>
       </div>
     </main>
   </div>
-
-  <div class="modal-overlay" id="modal">
-    <div class="modal">
-      <h3 id="modal-title">New Reservation</h3>
-      <form id="reservation-form">
-        <input type="hidden" id="edit-id">
-        <div class="form-group"><label>Guest Name *</label><input type="text" id="guest-name" required></div>
-        <div class="form-group"><label>Phone / WhatsApp *</label><input type="tel" id="guest-phone" required placeholder="+971 50 000 0000"></div>
-        <div class="form-group"><label>Email (optional)</label><input type="email" id="guest-email"></div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem">
-          <div class="form-group"><label>Date *</label><input type="date" id="res-date" required></div>
-          <div class="form-group"><label>Time *</label><input type="time" id="res-time" required></div>
-        </div>
-        <div class="form-group"><label>Party Size *</label><input type="number" id="party-size" min="1" max="30" value="2" required></div>
-        <div class="form-group"><label>Status</label>
-          <select id="res-status">
-            <option value="pending">Pending</option><option value="confirmed">Confirmed</option>
-            <option value="cancelled">Cancelled</option><option value="completed">Completed</option><option value="no_show">No-show</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Source</label>
-          <select id="res-source"><option value="admin">Admin</option><option value="website">Website</option><option value="phone">Phone</option><option value="whatsapp">WhatsApp</option></select>
-        </div>
-        <div class="form-group"><label>Guest Notes</label><textarea id="res-notes"></textarea></div>
-        <div class="form-group"><label>Internal Notes (staff only)</label><textarea id="res-internal"></textarea></div>
-        <div class="modal-actions">
-          <button type="button" class="btn btn-outline" onclick="closeModal()">Cancel</button>
-          <button type="submit" class="btn">Save</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
+  <div class="modal-overlay" id="modal"><div class="modal" id="modal-inner"></div></div>
   <script src="admin-app.js"></script>
 </body>
 </html>
