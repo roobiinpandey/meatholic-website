@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meatholic | Premium Wagyu Restaurant & Butcher – Abu Dhabi</title>
-  <meta name="description" content="Top 1% Japanese & Australian Wagyu in Al Zeina, Al Raha Beach, Abu Dhabi. Reservation only. Stay Hungry. Stay Meatholic.">
+  <title>Meatholic | Premium Wagyu Restaurant Abu Dhabi</title>
+  <meta name="description" content="Meatholic - Japanese & Australian Wagyu restaurant in Al Zeina, Al Raha Beach, Abu Dhabi. Top 1% cuts. Simple. Perfect.">
   <style>
     :root {
       --bg: #0c0c0c;
       --card: #161616;
-      --accent: #6B1E1E;          /* Deep maroon matching brand posters */
+      --accent: #6B1E1E;
       --accent-bright: #8B2A2A;
       --accent-light: #A63D3D;
       --text: #f5f5f5;
-      --muted: #b0b0b0;
-      --cream: #f0e6d8;
+      --muted: #a0a0a0;
+      --cream: #e8d5b7;
       --border: #2a2a2a;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       background: var(--bg);
@@ -28,11 +29,11 @@
     img { max-width: 100%; display: block; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
 
-    /* Header */
+    /* NAV */
     header {
-      position: fixed; top: 0; width: 100%; z-index: 100;
-      background: rgba(12,12,12,0.94); backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(8,8,8,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
     nav {
       display: flex; justify-content: space-between; align-items: center;
@@ -40,35 +41,36 @@
     }
     .logo {
       display: flex; align-items: center; gap: 0.55rem;
-      font-size: 1.4rem; font-weight: 700; letter-spacing: 1.5px;
+      font-weight: 700; font-size: 1.25rem; letter-spacing: 1px;
     }
     .logo .wagyu {
-      background: var(--accent);
-      color: white;
-      font-size: 0.9rem;
-      font-weight: 600;
-      width: 36px; height: 36px;
+      background: var(--accent); color: white;
+      width: 32px; height: 32px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      border-radius: 50%;
-      letter-spacing: 0;
+      font-size: 0.85rem;
     }
-    .logo span { color: var(--accent-light); }
-    .nav-links { display: flex; gap: 1.7rem; font-size: 0.92rem; }
-    .nav-links a:hover { color: var(--accent-light); }
-    .cta-btn {
+    .nav-links { display: flex; gap: 1.8rem; font-size: 0.9rem; letter-spacing: 0.5px; }
+    .nav-links a { opacity: 0.85; transition: opacity 0.2s; }
+    .nav-links a:hover { opacity: 1; }
+    .nav-cta {
       background: var(--accent); color: white; padding: 0.6rem 1.3rem;
-      border-radius: 4px; font-weight: 600; font-size: 0.92rem;
+      border-radius: 4px; font-weight: 600; font-size: 0.9rem;
       transition: background 0.25s, transform 0.2s;
     }
-    .cta-btn:hover { background: var(--accent-bright); transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--accent-bright); transform: translateY(-1px); }
 
-    /* Hero */
+    /* HERO - text pushed lower so sign is visible */
     .hero {
       height: 100vh; min-height: 640px;
-      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.7)),
+      background: linear-gradient(rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.85) 100%),
                   url('images/exterior.jpg') center/cover no-repeat;
-      display: flex; align-items: center; justify-content: center; text-align: center;
+      display: flex; align-items: flex-end; justify-content: center; text-align: center;
       position: relative;
+      padding-bottom: 8vh;
+    }
+    .hero-content {
+      padding-top: 0;
+      margin-bottom: 2rem;
     }
     .hero-content h1 {
       font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 800;
@@ -93,165 +95,145 @@
     .section-title span { color: var(--accent-light); }
     .section-sub {
       text-align: center; color: var(--muted); margin-bottom: 3rem;
-      max-width: 600px; margin-left: auto; margin-right: auto;
+      max-width: 560px; margin-left: auto; margin-right: auto;
     }
 
     /* Philosophy */
     .philosophy-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
     }
     .philosophy-card {
-      background: var(--accent);
-      border-radius: 8px;
-      padding: 2.5rem 2rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 2.5rem 2rem;
       display: flex; flex-direction: column; justify-content: center;
-      min-height: 280px;
     }
-    .philosophy-card p {
-      font-size: 1.25rem; line-height: 1.7; color: var(--cream);
-      font-style: italic;
-    }
-    .philosophy-card .source {
-      margin-top: 1.2rem; font-size: 0.85rem; opacity: 0.8; font-style: normal;
-    }
-    .philosophy-img {
-      border-radius: 8px; overflow: hidden; height: 100%; min-height: 280px;
-    }
-    .philosophy-img img {
-      width: 100%; height: 100%; object-fit: cover;
-    }
+    .philosophy-card p { font-size: 1.15rem; line-height: 1.7; font-style: italic; }
+    .philosophy-card .source { margin-top: 1.2rem; color: var(--accent-light); font-size: 0.9rem; font-style: normal; }
+    .philosophy-img { border-radius: 10px; overflow: hidden; }
+    .philosophy-img img { width: 100%; height: 100%; object-fit: cover; min-height: 280px; }
 
-    /* Signature Dishes */
+    /* Dishes */
     .dishes {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.6rem;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
     }
     .dish-card {
-      background: var(--card); border-radius: 8px; overflow: hidden;
-      border: 1px solid var(--border);
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
       transition: transform 0.3s, border-color 0.3s;
     }
     .dish-card:hover { transform: translateY(-6px); border-color: var(--accent); }
     .dish-card img { width: 100%; height: 220px; object-fit: cover; }
     .dish-card .content { padding: 1.3rem 1.4rem 1.5rem; }
-    .dish-card h3 { margin-bottom: 0.4rem; font-size: 1.15rem; }
-    .dish-card p { color: var(--muted); font-size: 0.92rem; }
+    .dish-card h3 { font-size: 1.2rem; margin-bottom: 0.4rem; }
+    .dish-card p { color: var(--muted); font-size: 0.95rem; }
 
-    /* Menu Highlights / Specials */
-    .specials-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
+    /* Specials */
+    .specials {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
     }
     .special-card {
-      background: var(--card); border-radius: 8px; overflow: hidden;
-      border: 1px solid var(--border);
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden; text-align: center;
     }
     .special-card img { width: 100%; height: 240px; object-fit: cover; }
     .special-card .content { padding: 1.3rem; }
-    .special-card h3 { font-size: 1.2rem; margin-bottom: 0.4rem; }
-    .price { color: var(--accent-light); font-weight: 700; font-size: 1.15rem; margin-top: 0.6rem; }
+    .special-card h3 { font-size: 1.15rem; margin-bottom: 0.3rem; }
+    .special-card .price { color: var(--cream); font-size: 1.4rem; font-weight: 700; }
 
     /* Gallery */
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.8rem;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem;
     }
     .gallery img {
-      width: 100%; height: 200px; object-fit: cover; border-radius: 6px;
+      width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px;
       transition: transform 0.3s;
     }
     .gallery img:hover { transform: scale(1.03); }
-    .gallery .wide { grid-column: span 2; height: 280px; }
-    .gallery .tall { height: 280px; }
 
-    /* Location & Hours */
+    /* Location */
     .location-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center;
     }
-    .info-block h3 { font-size: 1.4rem; margin-bottom: 1rem; }
-    .info-block p { color: var(--muted); margin-bottom: 0.5rem; }
-    .info-block strong { color: var(--text); }
-    .info-block .phone {
-      font-size: 1.4rem; color: var(--accent-light); font-weight: 700;
-      display: block; margin: 1rem 0 0.3rem;
-    }
+    .location-info h3 { font-size: 1.4rem; margin-bottom: 1rem; }
+    .location-info p { color: var(--muted); margin-bottom: 0.6rem; }
+    .location-info a { color: var(--accent-light); }
     .hours-box {
-      background: var(--accent);
-      border-radius: 8px;
-      padding: 1.8rem;
-      text-align: center;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.8rem; text-align: center;
+      margin-top: 1.5rem;
     }
-    .hours-box h4 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--cream); }
-    .hours-box .time { font-size: 1.6rem; font-weight: 700; }
+    .hours-box strong { display: block; font-size: 1.3rem; margin-bottom: 0.3rem; }
 
     /* Reservation */
     .reservation-box {
-      background: var(--accent);
-      border-radius: 10px;
-      padding: 3rem 2rem;
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto;
+      background: linear-gradient(135deg, #1a0a0a, #2a1010);
+      border: 1px solid var(--accent);
+      border-radius: 14px; padding: 3rem 2rem;
+      text-align: center; max-width: 700px; margin: 0 auto;
     }
-    .reservation-box h2 { font-size: 1.8rem; margin-bottom: 0.8rem; letter-spacing: 1px; }
-    .reservation-box p { color: var(--cream); margin-bottom: 1.5rem; opacity: 0.95; }
-    .reservation-box .phone-big {
-      font-size: 2rem; font-weight: 700; letter-spacing: 1px;
-      display: block; margin: 1rem 0;
+    .reservation-box h2 { font-size: 2rem; margin-bottom: 0.8rem; letter-spacing: 2px; }
+    .reservation-box > p { color: #ccc; margin-bottom: 1.5rem; }
+    .phone-big {
+      display: inline-block; font-size: 1.8rem; font-weight: 700;
+      color: var(--cream); letter-spacing: 1px;
     }
     .reservation-steps {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
       margin-top: 2.5rem; text-align: left;
     }
     .step { background: rgba(0,0,0,0.2); padding: 1.2rem; border-radius: 6px; }
     .step-num {
-      background: white; color: var(--accent); width: 28px; height: 28px;
+      background: var(--accent); width: 28px; height: 28px;
       border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 0.9rem; margin-bottom: 0.6rem;
+      font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem;
     }
     .step h4 { margin-bottom: 0.3rem; }
-    .step p { font-size: 0.9rem; opacity: 0.9; }
+    .step p { color: var(--muted); font-size: 0.9rem; }
 
     /* Footer */
     footer {
       background: #080808; padding: 3.5rem 0 2.5rem; text-align: center;
       border-top: 1px solid var(--border);
     }
-    footer .slogan {
-      font-size: 1.3rem; letter-spacing: 3px; margin-bottom: 1rem; font-weight: 600;
-    }
-    footer .slogan span { color: var(--accent-light); }
-    footer p { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.4rem; }
-    footer a:hover { color: var(--accent-light); }
+    .slogan { font-size: 1.3rem; letter-spacing: 2px; margin-bottom: 1rem; }
+    .slogan span { color: var(--accent-light); }
+    footer a { color: var(--accent-light); }
 
-    /* Responsive */
+    .cta-btn {
+      background: var(--accent); color: white; padding: 0.9rem 1.8rem;
+      border-radius: 4px; font-weight: 600; font-size: 1rem;
+      display: inline-block; transition: background 0.25s, transform 0.2s;
+    }
+    .cta-btn:hover { background: var(--accent-bright); transform: translateY(-2px); }
+
     @media (max-width: 900px) {
+      .dishes, .specials, .philosophy-grid, .location-grid { grid-template-columns: 1fr; }
       .gallery { grid-template-columns: repeat(2, 1fr); }
-      .gallery .wide { grid-column: span 2; }
       .reservation-steps { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
     }
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .philosophy-grid, .location-grid { grid-template-columns: 1fr; }
+      .hero { padding-bottom: 6vh; min-height: 560px; }
       .hero-content h1 { letter-spacing: 2px; }
-      .gallery { grid-template-columns: 1fr 1fr; }
+      .hero-content { margin-bottom: 1rem; }
     }
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <div class="logo">
+      <a href="#" class="logo">
         <span class="wagyu">和牛</span>
-        MEAT<span>HOLIC</span>
-      </div>
+        MEATHOLIC
+      </a>
       <div class="nav-links">
         <a href="#craft">The Craft</a>
         <a href="#dishes">Menu</a>
+        <a href="#specials">Specials</a>
         <a href="#gallery">Gallery</a>
         <a href="#location">Location</a>
-        <a href="#book">Reserve</a>
       </div>
-      <a href="tel:+971501262191" class="cta-btn">+971 50 126 2191</a>
+      <a href="#book" class="nav-cta">Reserve</a>
     </nav>
   </header>
 
@@ -319,83 +301,87 @@
           <img src="images/burger-closeup.jpg" alt="Wagyu Cheeseburger">
           <div class="content">
             <h3>Australian Wagyu Cheeseburger</h3>
-            <p>Juicy Wagyu, melted cheese, fresh lettuce on a soft bun.</p>
+            <p>Premium Wagyu beef, melted cheese, classic toppings.</p>
           </div>
         </div>
         <div class="dish-card">
           <img src="images/steak-sandwich.jpg" alt="Steak Sandwich">
           <div class="content">
             <h3>Steak Sandwich</h3>
-            <p>Tender steak with creamy sauce in a sesame baguette.</p>
+            <p>Sliced steak on fresh bread with house sauce.</p>
           </div>
         </div>
         <div class="dish-card">
           <img src="images/feta-corn-2.jpg" alt="Feta Corn">
           <div class="content">
             <h3>Feta Corn</h3>
-            <p>Grilled buttercorn with feta cheese. Perfect with steaks and fries.</p>
+            <p>Sweet corn with feta and herbs — the perfect side.</p>
           </div>
         </div>
         <div class="dish-card">
           <img src="images/calamari.jpg" alt="Calamari">
           <div class="content">
             <h3>Calamari</h3>
-            <p>Crispy golden calamari served with house dipping sauce and lime.</p>
+            <p>Crispy fried calamari with dipping sauce.</p>
           </div>
         </div>
         <div class="dish-card">
           <img src="images/tiramisu.jpg" alt="Tiramisu">
           <div class="content">
             <h3>Tiramisu</h3>
-            <p>“Some bites don’t just end — they transport you. Tiramisu is Italy in every layer.”</p>
+            <p>Classic Italian dessert to finish the meal.</p>
           </div>
         </div>
         <div class="dish-card">
           <img src="images/affogato.jpg" alt="Affogato">
           <div class="content">
             <h3>Affogato</h3>
-            <p>Espresso poured over creamy vanilla gelato in our signature red cup.</p>
+            <p>Espresso poured over vanilla ice cream.</p>
+          </div>
+        </div>
+        <div class="dish-card">
+          <img src="images/sharing-board.jpg" alt="Sharing Board">
+          <div class="content">
+            <h3>The Sharing Board</h3>
+            <p>A selection of cuts perfect for sharing.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SPECIALS & FEASTS -->
+  <!-- SPECIALS -->
   <section id="specials">
     <div class="container">
       <h2 class="section-title">Feasts & <span>Specials</span></h2>
-      <p class="section-sub">Perfect for sharing. Available daily and during happy hours.</p>
+      <p class="section-sub">Limited-time offers and group dining packages.</p>
       
-      <div class="specials-grid">
+      <div class="specials">
         <div class="special-card">
-          <img src="images/sharing-board.jpg" alt="The Sharing Board">
-          <div class="content">
-            <h3>The Sharing Board</h3>
-            <p>Australian Wagyu Cheeseburger + Prime Angus Steak + Unlimited Fries + House Salad + Sauce</p>
-            <div class="price">150 AED</div>
-          </div>
-        </div>
-        <div class="special-card">
-          <img src="images/feast-for-2.jpg" alt="Meatholic Feast for 2">
+          <img src="images/feast-for-2.jpg" alt="Feast for 2">
           <div class="content">
             <h3>Meatholic Feast for 2</h3>
-            <p>2× Wagyu Cheeseburgers + Angus Steak + Unlimited Fries + House Salad + Sauce</p>
-            <div class="price">199 AED</div>
+            <div class="price">199 د.إ</div>
           </div>
         </div>
         <div class="special-card">
-          <img src="images/feast-for-4.jpg" alt="Meatholic Feast for 4">
+          <img src="images/feast-for-4.jpg" alt="Feast for 4">
           <div class="content">
             <h3>Meatholic Feast for 4</h3>
-            <p>2× Wagyu Cheeseburgers + 2× Angus Steaks + Salads + Edamame + Tiramisu + Unlimited Fries + Drinks</p>
-            <div class="price">350 AED</div>
+            <div class="price">350 د.إ</div>
+          </div>
+        </div>
+        <div class="special-card">
+          <img src="images/weekly-specials.jpg" alt="Weekly Specials">
+          <div class="content">
+            <h3>Weekly Specials</h3>
+            <div class="price">See in-store</div>
           </div>
         </div>
       </div>
 
       <div style="margin-top: 3rem; text-align: center;">
-        <img src="images/weekly-specials.jpg" alt="Weekly Summer Specials" style="max-width: 520px; width: 100%; border-radius: 8px; margin: 0 auto;">
+        <img src="images/steak-fries-1.jpg" alt="Steak presentation" style="max-width: 100%; border-radius: 12px; max-height: 360px; object-fit: cover; width: 100%;">
       </div>
     </div>
   </section>
@@ -403,20 +389,17 @@
   <!-- GALLERY -->
   <section id="gallery" style="background: #111;">
     <div class="container">
-      <h2 class="section-title">The <span>Experience</span></h2>
-      <p class="section-sub">Every plate, every detail.</p>
-      
+      <h2 class="section-title">Gallery</h2>
+      <p class="section-sub">A taste of the Meatholic experience.</p>
       <div class="gallery">
-        <img src="images/steak-fries-1.jpg" alt="Steak & Fries" class="wide">
-        <img src="images/truffle-burger-table.jpg" alt="Truffle Burger ambiance" class="tall">
-        <img src="images/table-ready.jpg" alt="Your table is ready">
-        <img src="images/steak-burger-tasting.jpg" alt="Steak & Burger Tasting">
-        <img src="images/open-hours.jpg" alt="We are open" class="wide">
-        <img src="images/come-try-it.jpg" alt="You saw it, now come try it">
-        <img src="images/premium-wagyu-boxes.jpg" alt="Premium Wagyu for real meat lovers">
-        <img src="images/new-menu.jpg" alt="New Menu Just Dropped">
-        <img src="images/angus-menu-board.jpg" alt="Angus Range Menu">
-        <img src="images/steak-fries-promo.jpg" alt="Steak & Fries special">
+        <img src="images/truffle-burger-table.jpg" alt="Truffle burger">
+        <img src="images/table-ready.jpg" alt="Table setting">
+        <img src="images/steak-burger-tasting.jpg" alt="Steak tasting">
+        <img src="images/open-hours.jpg" alt="Open hours">
+        <img src="images/come-try-it.jpg" alt="Come try it">
+        <img src="images/exterior.jpg" alt="Restaurant exterior">
+        <img src="images/philosophy-seasoning.jpg" alt="Seasoning philosophy">
+        <img src="images/philosophy-handling.jpg" alt="Handling philosophy">
       </div>
     </div>
   </section>
@@ -425,21 +408,21 @@
   <section id="location">
     <div class="container">
       <h2 class="section-title">Find <span>Us</span></h2>
-      
       <div class="location-grid">
-        <div class="info-block">
+        <div class="location-info">
           <h3>Al Zeina, Al Raha Beach</h3>
           <p>Abu Dhabi, United Arab Emirates</p>
-          <a href="tel:+971501262191" class="phone">+971 50 126 2191</a>
-          <p>Call or WhatsApp for reservations</p>
-          
-          <div class="hours-box" style="margin-top: 2rem;">
-            <h4>Open Daily</h4>
-            <div class="time">2:00 PM – 12:00 AM</div>
+          <p style="margin-top: 1rem;">
+            <a href="tel:+971501262191">+971 50 126 2191</a><br>
+            Call or WhatsApp for reservations
+          </p>
+          <div class="hours-box">
+            <strong>Open Daily</strong>
+            2:00 PM – 12:00 AM
           </div>
         </div>
         <div>
-          <img src="images/exterior.jpg" alt="Meatholic Restaurant exterior at night" style="border-radius: 8px; width: 100%;">
+          <img src="images/exterior.jpg" alt="Meatholic exterior" style="border-radius: 12px; width: 100%; height: 320px; object-fit: cover;">
         </div>
       </div>
     </div>
@@ -477,7 +460,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="slogan">STAY HUNGRY. STAY <span>MEATHOLIC</span>.</div>
