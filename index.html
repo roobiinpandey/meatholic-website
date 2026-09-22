@@ -7,197 +7,83 @@
   <meta name="description" content="Meatholic - Japanese & Australian Wagyu restaurant in Al Zeina, Al Raha Beach, Abu Dhabi. Top 1% cuts. Simple. Perfect.">
   <style>
     :root {
-      --bg: #0c0c0c;
-      --card: #161616;
-      --accent: #6B1E1E;
-      --accent-bright: #8B2A2A;
-      --accent-light: #A63D3D;
-      --text: #f5f5f5;
-      --muted: #a0a0a0;
-      --cream: #e8d5b7;
-      --border: #2a2a2a;
+      --bg: #0c0c0c; --card: #161616; --accent: #6B1E1E; --accent-bright: #8B2A2A;
+      --accent-light: #A63D3D; --text: #f5f5f5; --muted: #a0a0a0; --cream: #e8d5b7; --border: #2a2a2a;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-
-    header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(8,8,8,0.92); backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    nav {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 0.85rem 1.5rem; max-width: 1200px; margin: 0 auto;
-    }
-    .logo {
-      display: flex; align-items: center; gap: 0.55rem;
-      font-weight: 700; font-size: 1.25rem; letter-spacing: 1px;
-    }
-    .logo .wagyu {
-      background: var(--accent); color: white;
-      width: 32px; height: 32px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.85rem;
-    }
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(8,8,8,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 1.5rem; max-width: 1200px; margin: 0 auto; }
+    .logo { display: flex; align-items: center; gap: 0.55rem; font-weight: 700; font-size: 1.25rem; letter-spacing: 1px; }
+    .logo .wagyu { background: var(--accent); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
     .nav-links { display: flex; gap: 1.8rem; font-size: 0.9rem; letter-spacing: 0.5px; }
     .nav-links a { opacity: 0.85; transition: opacity 0.2s; }
     .nav-links a:hover { opacity: 1; }
-    .nav-cta {
-      background: var(--accent); color: white; padding: 0.6rem 1.3rem;
-      border-radius: 4px; font-weight: 600; font-size: 0.9rem;
-      transition: background 0.25s, transform 0.2s;
-    }
+    .nav-cta { background: var(--accent); color: white; padding: 0.6rem 1.3rem; border-radius: 4px; font-weight: 600; font-size: 0.9rem; transition: background 0.25s, transform 0.2s; }
     .nav-cta:hover { background: var(--accent-bright); transform: translateY(-1px); }
-
-    /* HERO - all text forced into lower third so physical sign is fully visible */
     .hero {
       height: 100vh; min-height: 640px;
       background: linear-gradient(rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.88) 100%),
-                  url('images/exterior.jpg') center/cover no-repeat;
+                  url('https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114044/meatholic/exterior.jpg') center/cover no-repeat;
       display: flex; align-items: flex-end; justify-content: center; text-align: center;
-      position: relative;
-      padding-bottom: 5vh;
+      position: relative; padding-bottom: 5vh;
     }
-    .hero-content {
-      padding-top: 42vh;
-      margin-bottom: 1.5rem;
-      width: 100%;
-    }
-    .hero-content h1 {
-      font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 800;
-      letter-spacing: 5px; margin-bottom: 0.6rem;
-    }
-    .hero-content .tagline {
-      font-size: 1.15rem; color: var(--cream); margin-bottom: 0.5rem;
-      letter-spacing: 2px; text-transform: uppercase;
-    }
-    .hero-content p {
-      font-size: 1.1rem; color: #ccc; margin-bottom: 2rem;
-      max-width: 520px; margin-left: auto; margin-right: auto;
-    }
+    .hero-content { padding-top: 42vh; margin-bottom: 1.5rem; width: 100%; }
+    .hero-content h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 800; letter-spacing: 5px; margin-bottom: 0.6rem; }
+    .hero-content .tagline { font-size: 1.15rem; color: var(--cream); margin-bottom: 0.5rem; letter-spacing: 2px; text-transform: uppercase; }
+    .hero-content p { font-size: 1.1rem; color: #ccc; margin-bottom: 2rem; max-width: 520px; margin-left: auto; margin-right: auto; }
     .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-
     section { padding: 5rem 0; }
-    .section-title {
-      text-align: center; font-size: 2rem; margin-bottom: 0.6rem;
-      letter-spacing: 2px; font-weight: 700;
-    }
+    .section-title { text-align: center; font-size: 2rem; margin-bottom: 0.6rem; letter-spacing: 2px; font-weight: 700; }
     .section-title span { color: var(--accent-light); }
-    .section-sub {
-      text-align: center; color: var(--muted); margin-bottom: 3rem;
-      max-width: 560px; margin-left: auto; margin-right: auto;
-    }
-
-    .philosophy-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
-    }
-    .philosophy-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 10px; padding: 2.5rem 2rem;
-      display: flex; flex-direction: column; justify-content: center;
-    }
+    .section-sub { text-align: center; color: var(--muted); margin-bottom: 3rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .philosophy-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 2.5rem 2rem; display: flex; flex-direction: column; justify-content: center; }
     .philosophy-card p { font-size: 1.15rem; line-height: 1.7; font-style: italic; }
     .philosophy-card .source { margin-top: 1.2rem; color: var(--accent-light); font-size: 0.9rem; font-style: normal; }
     .philosophy-img { border-radius: 10px; overflow: hidden; }
     .philosophy-img img { width: 100%; height: 100%; object-fit: cover; min-height: 280px; }
-
-    .dishes {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-    }
-    .dish-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 12px; overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s;
-    }
+    .dishes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .dish-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: transform 0.3s, border-color 0.3s; }
     .dish-card:hover { transform: translateY(-6px); border-color: var(--accent); }
     .dish-card img { width: 100%; height: 220px; object-fit: cover; }
     .dish-card .content { padding: 1.3rem 1.4rem 1.5rem; }
     .dish-card h3 { font-size: 1.2rem; margin-bottom: 0.4rem; }
     .dish-card p { color: var(--muted); font-size: 0.95rem; }
-
-    .specials {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-    }
-    .special-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 12px; overflow: hidden; text-align: center;
-    }
+    .specials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .special-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; text-align: center; }
     .special-card img { width: 100%; height: 240px; object-fit: cover; }
     .special-card .content { padding: 1.3rem; }
     .special-card h3 { font-size: 1.15rem; margin-bottom: 0.3rem; }
     .special-card .price { color: var(--cream); font-size: 1.4rem; font-weight: 700; }
-
-    .gallery {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem;
-    }
-    .gallery img {
-      width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px;
-      transition: transform 0.3s;
-    }
+    .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; }
+    .gallery img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; transition: transform 0.3s; }
     .gallery img:hover { transform: scale(1.03); }
-
-    .location-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center;
-    }
+    .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
     .location-info h3 { font-size: 1.4rem; margin-bottom: 1rem; }
     .location-info p { color: var(--muted); margin-bottom: 0.6rem; }
     .location-info a { color: var(--accent-light); }
-    .hours-box {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 10px; padding: 1.8rem; text-align: center;
-      margin-top: 1.5rem;
-    }
+    .hours-box { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.8rem; text-align: center; margin-top: 1.5rem; }
     .hours-box strong { display: block; font-size: 1.3rem; margin-bottom: 0.3rem; }
-
-    .reservation-box {
-      background: linear-gradient(135deg, #1a0a0a, #2a1010);
-      border: 1px solid var(--accent);
-      border-radius: 14px; padding: 3rem 2rem;
-      text-align: center; max-width: 700px; margin: 0 auto;
-    }
+    .reservation-box { background: linear-gradient(135deg, #1a0a0a, #2a1010); border: 1px solid var(--accent); border-radius: 14px; padding: 3rem 2rem; text-align: center; max-width: 700px; margin: 0 auto; }
     .reservation-box h2 { font-size: 2rem; margin-bottom: 0.8rem; letter-spacing: 2px; }
     .reservation-box > p { color: #ccc; margin-bottom: 1.5rem; }
-    .phone-big {
-      display: inline-block; font-size: 1.8rem; font-weight: 700;
-      color: var(--cream); letter-spacing: 1px;
-    }
-    .reservation-steps {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
-      margin-top: 2.5rem; text-align: left;
-    }
+    .phone-big { display: inline-block; font-size: 1.8rem; font-weight: 700; color: var(--cream); letter-spacing: 1px; }
+    .reservation-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; text-align: left; }
     .step { background: rgba(0,0,0,0.2); padding: 1.2rem; border-radius: 6px; }
-    .step-num {
-      background: var(--accent); width: 28px; height: 28px;
-      border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
-      font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem;
-    }
+    .step-num { background: var(--accent); width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; }
     .step h4 { margin-bottom: 0.3rem; }
     .step p { color: var(--muted); font-size: 0.9rem; }
-
-    footer {
-      background: #080808; padding: 3.5rem 0 2.5rem; text-align: center;
-      border-top: 1px solid var(--border);
-    }
+    footer { background: #080808; padding: 3.5rem 0 2.5rem; text-align: center; border-top: 1px solid var(--border); }
     .slogan { font-size: 1.3rem; letter-spacing: 2px; margin-bottom: 1rem; }
     .slogan span { color: var(--accent-light); }
     footer a { color: var(--accent-light); }
-
-    .cta-btn {
-      background: var(--accent); color: white; padding: 0.9rem 1.8rem;
-      border-radius: 4px; font-weight: 600; font-size: 1rem;
-      display: inline-block; transition: background 0.25s, transform 0.2s;
-    }
+    .cta-btn { background: var(--accent); color: white; padding: 0.9rem 1.8rem; border-radius: 4px; font-weight: 600; font-size: 1rem; display: inline-block; transition: background 0.25s, transform 0.2s; }
     .cta-btn:hover { background: var(--accent-bright); transform: translateY(-2px); }
-
     @media (max-width: 900px) {
       .dishes, .specials, .philosophy-grid, .location-grid { grid-template-columns: 1fr; }
       .gallery { grid-template-columns: repeat(2, 1fr); }
@@ -214,10 +100,7 @@
 <body>
   <header>
     <nav>
-      <a href="#" class="logo">
-        <span class="wagyu">和牛</span>
-        MEATHOLIC
-      </a>
+      <a href="#" class="logo"><span class="wagyu">和牛</span> MEATHOLIC</a>
       <div class="nav-links">
         <a href="#craft">The Craft</a>
         <a href="#dishes">Menu</a>
@@ -251,10 +134,10 @@
           <div class="source">— Meatholic Philosophy</div>
         </div>
         <div class="philosophy-img">
-          <img src="images/truffle-burger-table.jpg" alt="Truffle Wagyu Burger at Meatholic">
+          <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114061/meatholic/truffle-burger-table.jpg" alt="Truffle Wagyu Burger at Meatholic">
         </div>
         <div class="philosophy-img">
-          <img src="images/doneness-chart.jpg" alt="How do you like your steak? Doneness guide">
+          <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114049/meatholic/doneness-chart.jpg" alt="How do you like your steak? Doneness guide">
         </div>
         <div class="philosophy-card">
           <p>“Wagyu needs gentle handling. Too much pressure or rough handling can damage its texture.”</p>
@@ -270,67 +153,40 @@
       <p class="section-sub">Premium Wagyu and Angus cuts, crafted with care.</p>
       <div class="dishes">
         <div class="dish-card">
-          <img src="images/truffle-burger.jpg" alt="Truffle Burger">
-          <div class="content">
-            <h3>Truffle Burger</h3>
-            <p>Wagyu patty with in-house truffle products. Served with unlimited classic fries.</p>
-          </div>
+          <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114062/meatholic/truffle-burger.jpg" alt="Truffle Burger">
+          <div class="content"><h3>Truffle Burger</h3><p>Wagyu patty with in-house truffle products. Served with unlimited classic fries.</p></div>
         </div>
         <div class="dish-card">
-          <img src="images/steak-fries-2.jpg" alt="Steak & Fries">
-          <div class="content">
-            <h3>Steak & Fries</h3>
-            <p>Prime Australian Angus steak with unlimited fries and house salad.</p>
-          </div>
+          <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114058/meatholic/steak-fries-2.jpg" alt="Steak & Fries">
+          <div class="content"><h3>Steak & Fries</h3><p>Prime Australian Angus steak with unlimited fries and house salad.</p></div>
         </div>
         <div class="dish-card">
-          <img src="images/burger-closeup.jpg" alt="Wagyu Cheeseburger">
-          <div class="content">
-            <h3>Australian Wagyu Cheeseburger</h3>
-            <p>Premium Wagyu beef, melted cheese, classic toppings.</p>
-          </div>
+          <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114046/meatholic/burger-closeup.jpg" alt="Wagyu Cheeseburger">
+          <div class="content"><h3>Australian Wagyu Cheeseburger</h3><p>Premium Wagyu beef, melted cheese, classic toppings.</p></div>
         </div>
         <div class="dish-card">
-          <img src="images/steak-sandwich.jpg" alt="Steak Sandwich">
-          <div class="content">
-            <h3>Steak Sandwich</h3>
-            <p>Sliced steak on fresh bread with house sauce.</p>
-          </div>
+          <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114059/meatholic/steak-sandwich.jpg" alt="Steak Sandwich">
+          <div class="content"><h3>Steak Sandwich</h3><p>Sliced steak on fresh bread with house sauce.</p></div>
         </div>
         <div class="dish-card">
-          <img src="images/feta-corn-2.jpg" alt="Feta Corn">
-          <div class="content">
-            <h3>Feta Corn</h3>
-            <p>Sweet corn with feta and herbs — the perfect side.</p>
-          </div>
+          <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114051/meatholic/feta-corn-2.jpg" alt="Feta Corn">
+          <div class="content"><h3>Feta Corn</h3><p>Sweet corn with feta and herbs — the perfect side.</p></div>
         </div>
         <div class="dish-card">
-          <img src="images/calamari.jpg" alt="Calamari">
-          <div class="content">
-            <h3>Calamari</h3>
-            <p>Crispy fried calamari with dipping sauce.</p>
-          </div>
+          <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114047/meatholic/calamari.jpg" alt="Calamari">
+          <div class="content"><h3>Calamari</h3><p>Crispy fried calamari with dipping sauce.</p></div>
         </div>
         <div class="dish-card">
-          <img src="images/tiramisu.jpg" alt="Tiramisu">
-          <div class="content">
-            <h3>Tiramisu</h3>
-            <p>Classic Italian dessert to finish the meal.</p>
-          </div>
+          <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114061/meatholic/tiramisu.jpg" alt="Tiramisu">
+          <div class="content"><h3>Tiramisu</h3><p>Classic Italian dessert to finish the meal.</p></div>
         </div>
         <div class="dish-card">
-          <img src="images/affogato.jpg" alt="Affogato">
-          <div class="content">
-            <h3>Affogato</h3>
-            <p>Espresso poured over vanilla ice cream.</p>
-          </div>
+          <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114045/meatholic/affogato.jpg" alt="Affogato">
+          <div class="content"><h3>Affogato</h3><p>Espresso poured over vanilla ice cream.</p></div>
         </div>
         <div class="dish-card">
-          <img src="images/sharing-board.jpg" alt="Sharing Board">
-          <div class="content">
-            <h3>The Sharing Board</h3>
-            <p>A selection of cuts perfect for sharing.</p>
-          </div>
+          <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114056/meatholic/sharing-board.jpg" alt="Sharing Board">
+          <div class="content"><h3>The Sharing Board</h3><p>A selection of cuts perfect for sharing.</p></div>
         </div>
       </div>
     </div>
@@ -342,29 +198,20 @@
       <p class="section-sub">Limited-time offers and group dining packages.</p>
       <div class="specials">
         <div class="special-card">
-          <img src="images/feast-for-2.jpg" alt="Feast for 2">
-          <div class="content">
-            <h3>Meatholic Feast for 2</h3>
-            <div class="price">199 د.إ</div>
-          </div>
+          <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114049/meatholic/feast-for-2.jpg" alt="Feast for 2">
+          <div class="content"><h3>Meatholic Feast for 2</h3><div class="price">199 د.إ</div></div>
         </div>
         <div class="special-card">
-          <img src="images/feast-for-4.jpg" alt="Feast for 4">
-          <div class="content">
-            <h3>Meatholic Feast for 4</h3>
-            <div class="price">350 د.إ</div>
-          </div>
+          <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114050/meatholic/feast-for-4.jpg" alt="Feast for 4">
+          <div class="content"><h3>Meatholic Feast for 4</h3><div class="price">350 د.إ</div></div>
         </div>
         <div class="special-card">
-          <img src="images/weekly-specials.jpg" alt="Weekly Specials">
-          <div class="content">
-            <h3>Weekly Specials</h3>
-            <div class="price">See in-store</div>
-          </div>
+          <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114064/meatholic/weekly-specials.jpg" alt="Weekly Specials">
+          <div class="content"><h3>Weekly Specials</h3><div class="price">See in-store</div></div>
         </div>
       </div>
       <div style="margin-top: 3rem; text-align: center;">
-        <img src="images/steak-fries-1.jpg" alt="Steak presentation" style="max-width: 100%; border-radius: 12px; max-height: 360px; object-fit: cover; width: 100%;">
+        <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114057/meatholic/steak-fries-1.jpg" alt="Steak presentation" style="max-width: 100%; border-radius: 12px; max-height: 360px; object-fit: cover; width: 100%;">
       </div>
     </div>
   </section>
@@ -374,14 +221,14 @@
       <h2 class="section-title">Gallery</h2>
       <p class="section-sub">A taste of the Meatholic experience.</p>
       <div class="gallery">
-        <img src="images/truffle-burger-table.jpg" alt="Truffle burger">
-        <img src="images/table-ready.jpg" alt="Table setting">
-        <img src="images/steak-burger-tasting.jpg" alt="Steak tasting">
-        <img src="images/open-hours.jpg" alt="Open hours">
-        <img src="images/come-try-it.jpg" alt="Come try it">
-        <img src="images/exterior.jpg" alt="Restaurant exterior">
-        <img src="images/philosophy-seasoning.jpg" alt="Seasoning philosophy">
-        <img src="images/philosophy-handling.jpg" alt="Handling philosophy">
+        <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114061/meatholic/truffle-burger-table.jpg" alt="Truffle burger">
+        <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114060/meatholic/table-ready.jpg" alt="Table setting">
+        <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114056/meatholic/steak-burger-tasting.jpg" alt="Steak tasting">
+        <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114053/meatholic/open-hours.jpg" alt="Open hours">
+        <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114048/meatholic/come-try-it.jpg" alt="Come try it">
+        <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114044/meatholic/exterior.jpg" alt="Restaurant exterior">
+        <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114054/meatholic/philosophy-seasoning.jpg" alt="Seasoning philosophy">
+        <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114053/meatholic/philosophy-handling.jpg" alt="Handling philosophy">
       </div>
     </div>
   </section>
@@ -397,13 +244,10 @@
             <a href="tel:+971501262191">+971 50 126 2191</a><br>
             Call or WhatsApp for reservations
           </p>
-          <div class="hours-box">
-            <strong>Open Daily</strong>
-            2:00 PM – 12:00 AM
-          </div>
+          <div class="hours-box"><strong>Open Daily</strong>2:00 PM – 12:00 AM</div>
         </div>
         <div>
-          <img src="images/exterior.jpg" alt="Meatholic exterior" style="border-radius: 12px; width: 100%; height: 320px; object-fit: cover;">
+          <img src="https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114044/meatholic/exterior.jpg" alt="Meatholic exterior" style="border-radius: 12px; width: 100%; height: 320px; object-fit: cover;">
         </div>
       </div>
     </div>
@@ -413,26 +257,13 @@
     <div class="container">
       <div class="reservation-box">
         <h2>RESERVATION ONLY</h2>
-        <p>To ensure the best dining experience, we accept guests by reservation only.<br>
-        Please reserve at least 1 hour before you arrive.</p>
+        <p>To ensure the best dining experience, we accept guests by reservation only.<br>Please reserve at least 1 hour before you arrive.</p>
         <a href="tel:+971501262191" class="phone-big">+971 50 126 2191</a>
         <p style="margin-top: 0.3rem; font-size: 0.95rem;">Call or WhatsApp</p>
         <div class="reservation-steps">
-          <div class="step">
-            <div class="step-num">01</div>
-            <h4>Reserve</h4>
-            <p>Call or WhatsApp at least 1 hour before you visit.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">02</div>
-            <h4>Arrive</h4>
-            <p>Walk in — your table is set and ready for you.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">03</div>
-            <h4>We handle the rest</h4>
-            <p>Sit back and let the Wagyu do the talking.</p>
-          </div>
+          <div class="step"><div class="step-num">01</div><h4>Reserve</h4><p>Call or WhatsApp at least 1 hour before you visit.</p></div>
+          <div class="step"><div class="step-num">02</div><h4>Arrive</h4><p>Walk in — your table is set and ready for you.</p></div>
+          <div class="step"><div class="step-num">03</div><h4>We handle the rest</h4><p>Sit back and let the Wagyu do the talking.</p></div>
         </div>
       </div>
     </div>
