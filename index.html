@@ -37,13 +37,14 @@ section{padding:5rem 0}
 .philosophy-card .source{margin-top:1.2rem;color:var(--accent-light);font-size:.9rem;font-style:normal}
 .philosophy-img{border-radius:10px;overflow:hidden}
 .philosophy-img img{width:100%;height:100%;object-fit:cover;min-height:280px}
-.dishes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.dish-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:transform .3s,border-color .3s}
-.dish-card:hover{transform:translateY(-6px);border-color:var(--accent)}
-.dish-card img{width:100%;height:220px;object-fit:cover}
-.dish-card .content{padding:1.3rem 1.4rem 1.5rem}
-.dish-card h3{font-size:1.2rem;margin-bottom:.4rem}
-.dish-card p{color:var(--muted);font-size:.95rem}
+.menu-cat{margin-bottom:2.5rem}
+.menu-cat h3{font-size:1.15rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent-light);margin-bottom:1rem;border-bottom:1px solid var(--border);padding-bottom:.5rem}
+.menu-item{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.menu-item:last-child{border-bottom:none}
+.menu-item .name{font-weight:600;font-size:1.05rem}
+.menu-item .desc{color:var(--muted);font-size:.9rem;margin-top:.25rem;max-width:640px}
+.menu-item .price{color:var(--cream);font-weight:700;font-size:1.05rem;white-space:nowrap}
+.menu-note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:1.5rem}
 .specials{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .special-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;text-align:center}
 .special-card img{width:100%;height:240px;object-fit:cover}
@@ -90,8 +91,8 @@ footer{background:#080808;padding:3.5rem 0 2.5rem;text-align:center;border-top:1
 footer a{color:var(--accent-light)}
 .cta-btn{background:var(--accent);color:#fff;padding:.9rem 1.8rem;border-radius:4px;font-weight:600;font-size:1rem;display:inline-block;transition:.25s}
 .cta-btn:hover{background:var(--accent-bright);transform:translateY(-2px)}
-@media(max-width:900px){.dishes,.specials,.philosophy-grid,.location-grid{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}.reservation-steps{grid-template-columns:1fr}.nav-links{display:none}}
-@media(max-width:768px){.hero{padding-bottom:4vh;min-height:560px}.hero-content{padding-top:38vh}.hero-content h1{letter-spacing:2px}}
+@media(max-width:900px){.specials,.philosophy-grid,.location-grid{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}.reservation-steps{grid-template-columns:1fr}.nav-links{display:none}}
+@media(max-width:768px){.hero{padding-bottom:4vh;min-height:560px}.hero-content{padding-top:38vh}.hero-content h1{letter-spacing:2px}.menu-item{flex-direction:column;gap:.35rem}}
 </style>
 </head>
 <body>
@@ -133,19 +134,54 @@ footer a{color:var(--accent-light)}
 </div></div></section>
 
 <section id="dishes" style="background:#111"><div class="container">
-<h2 class="section-title">Signature <span>Dishes</span></h2>
-<p class="section-sub">Premium Wagyu and Angus cuts, crafted with care.</p>
-<div class="dishes">
-<div class="dish-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/truffle-burger.jpg" alt="Truffle Burger"><div class="content"><h3>Truffle Burger</h3><p>Wagyu patty with in-house truffle products. Served with unlimited classic fries.</p></div></div>
-<div class="dish-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-fries-2.jpg" alt="Steak & Fries"><div class="content"><h3>Steak & Fries</h3><p>Prime Australian Angus steak with unlimited fries and house salad.</p></div></div>
-<div class="dish-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/burger-closeup.jpg" alt="Cheeseburger"><div class="content"><h3>Australian Wagyu Cheeseburger</h3><p>Premium Wagyu beef, melted cheese, classic toppings.</p></div></div>
-<div class="dish-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-sandwich.jpg" alt="Steak Sandwich"><div class="content"><h3>Steak Sandwich</h3><p>Sliced steak on fresh bread with house sauce.</p></div></div>
-<div class="dish-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/feta-corn-2.jpg" alt="Feta Corn"><div class="content"><h3>Feta Corn</h3><p>Sweet corn with feta and herbs — the perfect side.</p></div></div>
-<div class="dish-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/calamari.jpg" alt="Calamari"><div class="content"><h3>Calamari</h3><p>Crispy fried calamari with dipping sauce.</p></div></div>
-<div class="dish-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/tiramisu.jpg" alt="Tiramisu"><div class="content"><h3>Tiramisu</h3><p>Classic Italian dessert to finish the meal.</p></div></div>
-<div class="dish-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/affogato.jpg" alt="Affogato"><div class="content"><h3>Affogato</h3><p>Espresso poured over vanilla ice cream.</p></div></div>
-<div class="dish-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/sharing-board.jpg" alt="Sharing Board"><div class="content"><h3>The Sharing Board</h3><p>A selection of cuts perfect for sharing.</p></div></div>
-</div></div></section>
+<h2 class="section-title">Our <span>Menu</span></h2>
+<p class="section-sub">Prices in AED. Burgers show Australian / Japanese Wagyu options where available.</p>
+
+<div class="menu-cat">
+<h3>Starters & Salad</h3>
+<div class="menu-item"><div><div class="name">Greek Salad</div><div class="desc">Fresh cherry tomatoes, cucumbers, Kalamata olives, and feta cheese foam, topped with house-made special dressing.</div></div><div class="price">68</div></div>
+<div class="menu-item"><div><div class="name">Caesar Salad</div><div class="desc">Crisp romaine lettuce and garlic croutons, served with our signature Caesar dressing.</div></div><div class="price">56</div></div>
+<div class="menu-item"><div><div class="name">Edamame</div><div class="desc">Steamed young soybeans, lightly salted or spicy, your choice.</div></div><div class="price">34</div></div>
+</div>
+
+<div class="menu-cat">
+<h3>Burgers</h3>
+<div class="menu-item"><div><div class="name">Cheese Burger</div><div class="desc">Classic Australian Wagyu beef patty with melted cheese, served with classic fries.</div></div><div class="price">78 / 114</div></div>
+<div class="menu-item"><div><div class="name">Truffle Burger</div><div class="desc">Rich and savory Australian Wagyu patty with a hint of truffle, served with classic fries.</div></div><div class="price">86 / 122</div></div>
+<div class="menu-item"><div><div class="name">Mushroom Burger</div><div class="desc">Earthy mushroom twist on a juicy Australian Wagyu patty, served with classic fries.</div></div><div class="price">82 / 118</div></div>
+<div class="menu-item"><div><div class="name">Arugula Burger</div><div class="desc">Bold and peppery Australian Wagyu patty burger with a gourmet touch, served with classic fries.</div></div><div class="price">82 / 118</div></div>
+</div>
+
+<div class="menu-cat">
+<h3>Main</h3>
+<div class="menu-item"><div><div class="name">Fish & Chips</div><div class="desc">Crispy golden fish with fries and tartar sauce.</div></div><div class="price">130</div></div>
+</div>
+
+<div class="menu-cat">
+<h3>Steaks</h3>
+<div class="menu-item"><div><div class="name">Striploin A3 (200g)</div><div class="desc">Elegant Wagyu cut with rich flavor, served with fries and salad.</div></div><div class="price">490</div></div>
+<div class="menu-item"><div><div class="name">Rib Eye A3 (250g)</div><div class="desc">Premium Japanese Wagyu experience, served with fries and salad.</div></div><div class="price">490</div></div>
+<div class="menu-item"><div><div class="name">Striploin 3+ (200g)</div><div class="desc">Lean and flavorful steak served with fries and salad.</div></div><div class="price">198</div></div>
+<div class="menu-item"><div><div class="name">Rib Eye 3+ (250g)</div><div class="desc">Tender and marbled cut grilled to perfection, served with fries and salad.</div></div><div class="price">198</div></div>
+<div class="menu-item"><div><div class="name">Abdullah's Steak</div><div class="desc">Signature indulgent steak, bold and unforgettable, served with fries and salad.</div></div><div class="price">740</div></div>
+</div>
+
+<div class="menu-cat">
+<h3>Add-On</h3>
+<div class="menu-item"><div><div class="name">Spicy Fries</div><div class="desc">Fries with a fiery kick.</div></div><div class="price">8</div></div>
+<div class="menu-item"><div><div class="name">Parmesan Fries</div><div class="desc">Savory fries with a cheesy finish.</div></div><div class="price">8</div></div>
+<div class="menu-item"><div><div class="name">Truffle Fries</div><div class="desc">Gourmet fries with a hint of truffle.</div></div><div class="price">12</div></div>
+</div>
+
+<div class="menu-cat">
+<h3>Desserts</h3>
+<div class="menu-item"><div><div class="name">Tiramisu</div><div class="desc">Tiramisu balls served with mascarpone cream on the side.</div></div><div class="price">45</div></div>
+<div class="menu-item"><div><div class="name">Crème Brûlée</div><div class="desc">Our family recipe, crafted with a touch of Emirati heritage.</div></div><div class="price">30</div></div>
+<div class="menu-item"><div><div class="name">Ice Cream</div><div class="desc">One scoop of vanilla ice cream served with passion fruit sauce on the side.</div></div><div class="price">15</div></div>
+</div>
+
+<p class="menu-note">Sauces & drinks available in-house · Prices in AED · Subject to change</p>
+</div></section>
 
 <section id="specials"><div class="container">
 <h2 class="section-title">Feasts & <span>Specials</span></h2>
