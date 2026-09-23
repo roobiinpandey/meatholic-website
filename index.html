@@ -37,13 +37,17 @@ section{padding:5rem 0}
 .philosophy-card .source{margin-top:1.2rem;color:var(--accent-light);font-size:.9rem;font-style:normal}
 .philosophy-img{border-radius:10px;overflow:hidden}
 .philosophy-img img{width:100%;height:100%;object-fit:cover;min-height:280px}
-.menu-cat{margin-bottom:2.5rem}
-.menu-cat h3{font-size:1.15rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent-light);margin-bottom:1rem;border-bottom:1px solid var(--border);padding-bottom:.5rem}
-.menu-item{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
-.menu-item:last-child{border-bottom:none}
-.menu-item .name{font-weight:600;font-size:1.05rem}
-.menu-item .desc{color:var(--muted);font-size:.9rem;margin-top:.25rem;max-width:640px}
-.menu-item .price{color:var(--cream);font-weight:700;font-size:1.05rem;white-space:nowrap}
+/* Menu cards */
+.menu-cat{margin-bottom:3rem}
+.menu-cat h3{font-size:1.15rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent-light);margin-bottom:1.25rem;border-bottom:1px solid var(--border);padding-bottom:.5rem}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.menu-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+.menu-card:hover{transform:translateY(-4px);border-color:rgba(166,61,61,.45)}
+.menu-card img{width:100%;height:180px;object-fit:cover;background:#1a1a1a}
+.menu-card .body{padding:1.15rem 1.2rem 1.35rem;display:flex;flex-direction:column;flex:1}
+.menu-card .name{font-weight:600;font-size:1.05rem;margin-bottom:.35rem}
+.menu-card .desc{color:var(--muted);font-size:.88rem;line-height:1.5;flex:1;margin-bottom:.9rem}
+.menu-card .price{color:var(--cream);font-weight:700;font-size:1.1rem}
 .menu-note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:1.5rem}
 .specials{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .special-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;text-align:center}
@@ -91,8 +95,8 @@ footer{background:#080808;padding:3.5rem 0 2.5rem;text-align:center;border-top:1
 footer a{color:var(--accent-light)}
 .cta-btn{background:var(--accent);color:#fff;padding:.9rem 1.8rem;border-radius:4px;font-weight:600;font-size:1rem;display:inline-block;transition:.25s}
 .cta-btn:hover{background:var(--accent-bright);transform:translateY(-2px)}
-@media(max-width:900px){.specials,.philosophy-grid,.location-grid{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}.reservation-steps{grid-template-columns:1fr}.nav-links{display:none}}
-@media(max-width:768px){.hero{padding-bottom:4vh;min-height:560px}.hero-content{padding-top:38vh}.hero-content h1{letter-spacing:2px}.menu-item{flex-direction:column;gap:.35rem}}
+@media(max-width:900px){.specials,.philosophy-grid,.location-grid,.menu-grid{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:repeat(2,1fr)}.reservation-steps{grid-template-columns:1fr}.nav-links{display:none}}
+@media(max-width:640px){.menu-grid{grid-template-columns:1fr}.hero{padding-bottom:4vh;min-height:560px}.hero-content{padding-top:38vh}.hero-content h1{letter-spacing:2px}}
 </style>
 </head>
 <body>
@@ -139,45 +143,190 @@ footer a{color:var(--accent-light)}
 
 <div class="menu-cat">
 <h3>Starters & Salad</h3>
-<div class="menu-item"><div><div class="name">Greek Salad</div><div class="desc">Fresh cherry tomatoes, cucumbers, Kalamata olives, and feta cheese foam, topped with house-made special dressing.</div></div><div class="price">68</div></div>
-<div class="menu-item"><div><div class="name">Caesar Salad</div><div class="desc">Crisp romaine lettuce and garlic croutons, served with our signature Caesar dressing.</div></div><div class="price">56</div></div>
-<div class="menu-item"><div><div class="name">Edamame</div><div class="desc">Steamed young soybeans, lightly salted or spicy, your choice.</div></div><div class="price">34</div></div>
+<div class="menu-grid">
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/feta-corn-1.jpg" alt="Greek Salad" loading="lazy">
+<div class="body">
+<div class="name">Greek Salad</div>
+<div class="desc">Fresh cherry tomatoes, cucumbers, Kalamata olives, and feta cheese foam, topped with house-made special dressing.</div>
+<div class="price">68</div>
+</div>
+</div>
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/sharing-board.jpg" alt="Caesar Salad" loading="lazy">
+<div class="body">
+<div class="name">Caesar Salad</div>
+<div class="desc">Crisp romaine lettuce and garlic croutons, served with our signature Caesar dressing.</div>
+<div class="price">56</div>
+</div>
+</div>
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/feta-corn-2.jpg" alt="Edamame" loading="lazy">
+<div class="body">
+<div class="name">Edamame</div>
+<div class="desc">Steamed young soybeans, lightly salted or spicy, your choice.</div>
+<div class="price">34</div>
+</div>
+</div>
+</div>
 </div>
 
 <div class="menu-cat">
 <h3>Burgers</h3>
-<div class="menu-item"><div><div class="name">Cheese Burger</div><div class="desc">Classic Australian Wagyu beef patty with melted cheese, served with classic fries.</div></div><div class="price">78 / 114</div></div>
-<div class="menu-item"><div><div class="name">Truffle Burger</div><div class="desc">Rich and savory Australian Wagyu patty with a hint of truffle, served with classic fries.</div></div><div class="price">86 / 122</div></div>
-<div class="menu-item"><div><div class="name">Mushroom Burger</div><div class="desc">Earthy mushroom twist on a juicy Australian Wagyu patty, served with classic fries.</div></div><div class="price">82 / 118</div></div>
-<div class="menu-item"><div><div class="name">Arugula Burger</div><div class="desc">Bold and peppery Australian Wagyu patty burger with a gourmet touch, served with classic fries.</div></div><div class="price">82 / 118</div></div>
+<div class="menu-grid">
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/burger-closeup.jpg" alt="Cheese Burger" loading="lazy">
+<div class="body">
+<div class="name">Cheese Burger</div>
+<div class="desc">Classic Australian Wagyu beef patty with melted cheese, served with classic fries.</div>
+<div class="price">78 / 114</div>
+</div>
+</div>
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/truffle-burger.jpg" alt="Truffle Burger" loading="lazy">
+<div class="body">
+<div class="name">Truffle Burger</div>
+<div class="desc">Rich and savory Australian Wagyu patty with a hint of truffle, served with classic fries.</div>
+<div class="price">86 / 122</div>
+</div>
+</div>
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/truffle-burger-table.jpg" alt="Mushroom Burger" loading="lazy">
+<div class="body">
+<div class="name">Mushroom Burger</div>
+<div class="desc">Earthy mushroom twist on a juicy Australian Wagyu patty, served with classic fries.</div>
+<div class="price">82 / 118</div>
+</div>
+</div>
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-burger-tasting.jpg" alt="Arugula Burger" loading="lazy">
+<div class="body">
+<div class="name">Arugula Burger</div>
+<div class="desc">Bold and peppery Australian Wagyu patty burger with a gourmet touch, served with classic fries.</div>
+<div class="price">82 / 118</div>
+</div>
+</div>
+</div>
 </div>
 
 <div class="menu-cat">
 <h3>Main</h3>
-<div class="menu-item"><div><div class="name">Fish & Chips</div><div class="desc">Crispy golden fish with fries and tartar sauce.</div></div><div class="price">130</div></div>
+<div class="menu-grid">
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/calamari.jpg" alt="Fish & Chips" loading="lazy">
+<div class="body">
+<div class="name">Fish & Chips</div>
+<div class="desc">Crispy golden fish with fries and tartar sauce.</div>
+<div class="price">130</div>
+</div>
+</div>
+</div>
 </div>
 
 <div class="menu-cat">
 <h3>Steaks</h3>
-<div class="menu-item"><div><div class="name">Striploin A3 (200g)</div><div class="desc">Elegant Wagyu cut with rich flavor, served with fries and salad.</div></div><div class="price">490</div></div>
-<div class="menu-item"><div><div class="name">Rib Eye A3 (250g)</div><div class="desc">Premium Japanese Wagyu experience, served with fries and salad.</div></div><div class="price">490</div></div>
-<div class="menu-item"><div><div class="name">Striploin 3+ (200g)</div><div class="desc">Lean and flavorful steak served with fries and salad.</div></div><div class="price">198</div></div>
-<div class="menu-item"><div><div class="name">Rib Eye 3+ (250g)</div><div class="desc">Tender and marbled cut grilled to perfection, served with fries and salad.</div></div><div class="price">198</div></div>
-<div class="menu-item"><div><div class="name">Abdullah's Steak</div><div class="desc">Signature indulgent steak, bold and unforgettable, served with fries and salad.</div></div><div class="price">740</div></div>
+<div class="menu-grid">
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-fries-1.jpg" alt="Striploin A3" loading="lazy">
+<div class="body">
+<div class="name">Striploin A3 (200g)</div>
+<div class="desc">Elegant Wagyu cut with rich flavor, served with fries and salad.</div>
+<div class="price">490</div>
+</div>
+</div>
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-fries-2.jpg" alt="Rib Eye A3" loading="lazy">
+<div class="body">
+<div class="name">Rib Eye A3 (250g)</div>
+<div class="desc">Premium Japanese Wagyu experience, served with fries and salad.</div>
+<div class="price">490</div>
+</div>
+</div>
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-fries-promo.jpg" alt="Striploin 3+" loading="lazy">
+<div class="body">
+<div class="name">Striploin 3+ (200g)</div>
+<div class="desc">Lean and flavorful steak served with fries and salad.</div>
+<div class="price">198</div>
+</div>
+</div>
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-sandwich.jpg" alt="Rib Eye 3+" loading="lazy">
+<div class="body">
+<div class="name">Rib Eye 3+ (250g)</div>
+<div class="desc">Tender and marbled cut grilled to perfection, served with fries and salad.</div>
+<div class="price">198</div>
+</div>
+</div>
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/premium-wagyu-boxes.jpg" alt="Abdullah's Steak" loading="lazy">
+<div class="body">
+<div class="name">Abdullah's Steak</div>
+<div class="desc">Signature indulgent steak, bold and unforgettable, served with fries and salad.</div>
+<div class="price">740</div>
+</div>
+</div>
+</div>
 </div>
 
 <div class="menu-cat">
 <h3>Add-On</h3>
-<div class="menu-item"><div><div class="name">Spicy Fries</div><div class="desc">Fries with a fiery kick.</div></div><div class="price">8</div></div>
-<div class="menu-item"><div><div class="name">Parmesan Fries</div><div class="desc">Savory fries with a cheesy finish.</div></div><div class="price">8</div></div>
-<div class="menu-item"><div><div class="name">Truffle Fries</div><div class="desc">Gourmet fries with a hint of truffle.</div></div><div class="price">12</div></div>
+<div class="menu-grid">
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-fries-1.jpg" alt="Spicy Fries" loading="lazy">
+<div class="body">
+<div class="name">Spicy Fries</div>
+<div class="desc">Fries with a fiery kick.</div>
+<div class="price">8</div>
+</div>
+</div>
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-fries-2.jpg" alt="Parmesan Fries" loading="lazy">
+<div class="body">
+<div class="name">Parmesan Fries</div>
+<div class="desc">Savory fries with a cheesy finish.</div>
+<div class="price">8</div>
+</div>
+</div>
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-fries-promo.jpg" alt="Truffle Fries" loading="lazy">
+<div class="body">
+<div class="name">Truffle Fries</div>
+<div class="desc">Gourmet fries with a hint of truffle.</div>
+<div class="price">12</div>
+</div>
+</div>
+</div>
 </div>
 
 <div class="menu-cat">
 <h3>Desserts</h3>
-<div class="menu-item"><div><div class="name">Tiramisu</div><div class="desc">Tiramisu balls served with mascarpone cream on the side.</div></div><div class="price">45</div></div>
-<div class="menu-item"><div><div class="name">Crème Brûlée</div><div class="desc">Our family recipe, crafted with a touch of Emirati heritage.</div></div><div class="price">30</div></div>
-<div class="menu-item"><div><div class="name">Ice Cream</div><div class="desc">One scoop of vanilla ice cream served with passion fruit sauce on the side.</div></div><div class="price">15</div></div>
+<div class="menu-grid">
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/tiramisu.jpg" alt="Tiramisu" loading="lazy">
+<div class="body">
+<div class="name">Tiramisu</div>
+<div class="desc">Tiramisu balls served with mascarpone cream on the side.</div>
+<div class="price">45</div>
+</div>
+</div>
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/affogato.jpg" alt="Crème Brûlée" loading="lazy">
+<div class="body">
+<div class="name">Crème Brûlée</div>
+<div class="desc">Our family recipe, crafted with a touch of Emirati heritage.</div>
+<div class="price">30</div>
+</div>
+</div>
+<div class="menu-card">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/affogato.jpg" alt="Ice Cream" loading="lazy">
+<div class="body">
+<div class="name">Ice Cream</div>
+<div class="desc">One scoop of vanilla ice cream served with passion fruit sauce on the side.</div>
+<div class="price">15</div>
+</div>
+</div>
+</div>
 </div>
 
 <p class="menu-note">Sauces & drinks available in-house · Prices in AED · Subject to change</p>
@@ -233,7 +382,7 @@ footer a{color:var(--accent-light)}
 </div></div>
 <div class="container reviews-cta">
 <a href="https://www.google.com/maps/place/Meatholic/@24.4555297,54.6170522,17z/data=!4m8!3m7!1s0x3e5e4f007d428a9b:0xe0a2f164261a2f36!8m2!3d24.4551608!4d54.6172298!9m1!1b1!16s%2Fg%2F11mm0vrg6j?hl=en-GB&entry=ttu" target="_blank" rel="noopener" class="cta-btn">Read all reviews on Google</a>
-<p style="margin-top:.8rem;color:var(--muted);font-size:.85rem">Loved your meal? Leave a review on Google Maps.</p>
+<p style="margin-top:1rem;color:var(--muted);font-size:.9rem">Loved your meal? Leave a review on Google Maps.</p>
 </div>
 </section>
 
@@ -243,16 +392,18 @@ footer a{color:var(--accent-light)}
 <div class="location-grid">
 <div class="location-info">
 <h3>Meatholic</h3>
-<p><strong style="color:var(--text)">Al Raha Blvd, Al Zeina, Al Raha Beach</strong><br>Abu Dhabi, United Arab Emirates</p>
-<p style="margin-top:1rem"><a href="tel:+971501262191" class="phone">+971 50 126 2191</a><br><span style="color:var(--muted);font-size:.95rem">Call or WhatsApp for reservations</span></p>
-<div class="hours-box"><h4>Open Daily</h4><div class="time">2:00 PM – 12:00 AM</div></div>
-<div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.75rem">
-<a href="https://www.google.com/maps/search/?api=1&query=Meatholic+restaurant+Al+Raha+Blvd+Al+Zeina+Abu+Dhabi" target="_blank" rel="noopener" class="cta-btn" style="font-size:.9rem;padding:.7rem 1.2rem">Open in Google Maps</a>
-<a href="https://www.google.com/maps/dir/?api=1&destination=Meatholic+restaurant,+Al+Raha+Blvd,+Al+Zeina,+Abu+Dhabi" target="_blank" rel="noopener" class="cta-btn" style="font-size:.9rem;padding:.7rem 1.2rem;background:transparent;border:1px solid rgba(255,255,255,.35)">Get Directions</a>
-</div></div>
+<p><strong>Al Raha Blvd, Al Zeina, Al Raha Beach</strong><br>Abu Dhabi, United Arab Emirates</p>
+<p><a href="tel:+971501262191" class="phone">+971 50 126 2191</a><br>Call or WhatsApp for reservations</p>
+<div class="hours-box">
+<h4>Open Daily</h4>
+<div class="time">2:00 PM – 12:00 AM</div>
+</div>
+</div>
 <div class="map-wrap">
-<iframe title="Meatholic location" src="https://maps.google.com/maps?q=Meatholic+restaurant+Al+Raha+Blvd+Al+Zeina+Abu+Dhabi&z=17&output=embed" width="100%" height="360" style="border:0;border-radius:12px;min-height:320px" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div></div></div></section>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3631.8!2d54.6172298!3d24.4551608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e4f007d428a9b%3A0xe0a2f164261a2f36!2sMeatholic!5e0!3m2!1sen!2sae!4v1700000000000!5m2!1sen!2sae" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</div>
+</div></section>
 
 <section id="book" style="background:#111"><div class="container">
 <div class="reservation-box">
