@@ -217,6 +217,15 @@
     msg.textContent = text;
   }
 
+  // UAE mobile: 05XXXXXXXX (10 digits). Also accept +9715… / 9715… and normalize to 05…
+  function normalizeUaePhone(raw) {
+    var d = String(raw || "").replace(/[\s\-().]/g, "");
+    if (d.indexOf("+") === 0) d = d.slice(1);
+    if (d.indexOf("00971") === 0) d = d.slice(2);
+    if (d.indexOf("971") === 0 && d.length >= 12) d = "0" + d.slice(3);
+    return d;
+  }
+
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
     msg.className = "book-msg";
@@ -231,7 +240,8 @@
     } catch (_) {}
 
     var guest_name = document.getElementById("guest_name").value.trim();
-    var phone = document.getElementById("phone").value.trim();
+    var phoneRaw = document.getElementById("phone").value.trim();
+    var phone = normalizeUaePhone(phoneRaw);
     var email = document.getElementById("email").value.trim();
     var party_size = parseInt(document.getElementById("party_size").value, 10);
     var reservation_date = document.getElementById("reservation_date").value;
@@ -242,8 +252,8 @@
       showErr("Please enter a valid name.");
       return;
     }
-    if (phone.length < 7 || phone.length > 40) {
-      showErr("Please enter a valid phone number.");
+    if (!/^05[0-9]{8}$/.test(phone)) {
+      showErr("Please enter a UAE mobile number (05XXXXXXXX).");
       return;
     }
     if (email && email.length > 120) {
