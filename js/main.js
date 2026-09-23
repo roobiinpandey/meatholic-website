@@ -258,6 +258,10 @@
       showErr("Please choose a valid date.");
       return;
     }
+    if (!reservation_time) {
+      showErr("Please choose a time.");
+      return;
+    }
     if (notes.length > 500) {
       showErr("Notes must be under 500 characters.");
       return;
@@ -289,7 +293,12 @@
     } catch (err) {
       console.error(err);
       msg.className = "book-msg err";
-      msg.textContent = "Could not send request. Please call or WhatsApp +971 50 126 2191.";
+      var detail = (err && err.message) ? String(err.message) : "";
+      if (/row-level security|42501|policy/i.test(detail)) {
+        msg.textContent = "Reservation system is being updated. Please call or WhatsApp +971 50 126 2191.";
+      } else {
+        msg.textContent = "Could not send request. Please call or WhatsApp +971 50 126 2191.";
+      }
     } finally {
       btn.disabled = false;
       btn.textContent = "Request Reservation";
