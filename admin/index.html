@@ -46,14 +46,14 @@
           <button class="btn" onclick="openResModal()">+ New</button>
         </div>
         <div class="stats">
-          <div class="stat-card today"><div class="label">Today</div><div class="value" id="stat-today">—</div></div>
+          <div class="stat-card today"><div class="label">Service day</div><div class="value" id="stat-today">—</div></div>
           <div class="stat-card pending"><div class="label">Pending</div><div class="value" id="stat-pending">—</div></div>
           <div class="stat-card confirmed"><div class="label">Confirmed</div><div class="value" id="stat-confirmed">—</div></div>
-          <div class="stat-card covers"><div class="label">Covers Today</div><div class="value" id="stat-covers">—</div></div>
+          <div class="stat-card covers"><div class="label">Covers (day)</div><div class="value" id="stat-covers">—</div></div>
         </div>
         <div class="toolbar">
-          <input type="date" id="filter-date" onchange="loadReservations()" title="Pick a date, or clear for all">
-          <button type="button" class="btn-outline btn" onclick="filterResToday()">Today</button>
+          <input type="date" id="filter-date" onchange="loadReservations()" title="Pick any date to see that day's bookings">
+          <button type="button" class="btn-outline btn" onclick="filterResToday()">Service day</button>
           <button type="button" class="btn-outline btn" onclick="filterResAll()">All dates</button>
           <select id="filter-status" onchange="loadReservations()">
             <option value="">All Status</option>
