@@ -1,1 +1,368 @@
-SEE_FILE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meatholic | Premium Wagyu Restaurant Abu Dhabi</title>
+<meta name="description" content="Meatholic - Japanese & Australian Wagyu restaurant in Al Zeina, Al Raha Beach, Abu Dhabi.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#6B1E1E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dirham/dist/css/dirham.css">
+<style>
+:root{--bg:#0c0c0c;--card:#161616;--accent:#6B1E1E;--accent-bright:#8B2A2A;--accent-light:#A63D3D;--text:#f5f5f5;--muted:#a0a0a0;--cream:#e8d5b7;--border:#2a2a2a}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,8,8,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:.85rem 1.5rem;max-width:1200px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:.55rem;font-weight:700;font-size:1.25rem;letter-spacing:1px}
+.logo .wagyu{background:var(--accent);color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.nav-links{display:flex;gap:1.5rem;font-size:.88rem;letter-spacing:.5px}
+.nav-links a{opacity:.85;transition:.2s;position:relative}
+.nav-links a:hover,.nav-links a.active{opacity:1;color:#fff}
+.nav-links a.active::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--accent-light);border-radius:1px}
+.nav-cta{background:var(--accent);color:#fff;padding:.55rem 1.15rem;border-radius:4px;font-weight:600;font-size:.88rem}
+.nav-cta:hover{background:var(--accent-bright)}
+.hero{height:100vh;min-height:640px;background:linear-gradient(rgba(0,0,0,.25) 0%,rgba(0,0,0,.4) 40%,rgba(0,0,0,.88) 100%),url('https://res.cloudinary.com/dzzonkdpm/image/upload/v1790114044/meatholic/exterior.jpg') center/cover no-repeat;display:flex;align-items:flex-end;justify-content:center;text-align:center;padding-bottom:5vh}
+.hero-content{padding-top:42vh;margin-bottom:1.5rem;width:100%}
+.hero-content h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:800;letter-spacing:5px;margin-bottom:.6rem}
+.hero-content .tagline{font-size:1.15rem;color:var(--cream);margin-bottom:.5rem;letter-spacing:2px;text-transform:uppercase}
+.hero-content p{font-size:1.1rem;color:#ccc;margin-bottom:2rem}
+.hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+section{padding:5rem 0}
+.section-title{text-align:center;font-size:2rem;margin-bottom:.6rem;letter-spacing:2px;font-weight:700}
+.section-title span{color:var(--accent-light)}
+.section-sub{text-align:center;color:var(--muted);margin-bottom:3rem;max-width:560px;margin-left:auto;margin-right:auto}
+.philosophy-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.philosophy-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:2.5rem 2rem}
+.philosophy-card p{font-size:1.15rem;line-height:1.7;font-style:italic}
+.philosophy-card .source{margin-top:1.2rem;color:var(--accent-light);font-size:.9rem;font-style:normal}
+.philosophy-img{border-radius:10px;overflow:hidden}
+.philosophy-img img{width:100%;height:100%;object-fit:cover;min-height:280px}
+.menu-cat{margin-bottom:3rem}
+.menu-cat h3{font-size:1.15rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent-light);margin-bottom:1.25rem;border-bottom:1px solid var(--border);padding-bottom:.5rem}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.menu-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+.menu-card:hover{transform:translateY(-4px);border-color:rgba(166,61,61,.45)}
+.menu-card img{width:100%;height:180px;object-fit:cover;background:#1a1a1a}
+.menu-card .body{padding:1.15rem 1.2rem 1.35rem;display:flex;flex-direction:column;flex:1}
+.menu-card .name{font-weight:600;font-size:1.05rem;margin-bottom:.35rem}
+.menu-card .desc{color:var(--muted);font-size:.88rem;line-height:1.5;flex:1;margin-bottom:.9rem}
+.menu-card .price{color:var(--cream);font-weight:700;font-size:1.1rem;display:flex;align-items:center;gap:.3rem}
+.menu-card .price .dirham-symbol{font-size:1em;line-height:1}
+.menu-note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:1.5rem}
+.specials{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.special-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;text-align:center}
+.special-card img{width:100%;height:240px;object-fit:cover}
+.special-card .content{padding:1.3rem}
+.special-card h3{font-size:1.15rem;margin-bottom:.3rem}
+.special-card .price{color:var(--cream);font-size:1.4rem;font-weight:700;display:inline-flex;align-items:center;gap:.35rem;justify-content:center}
+.special-card .price .dirham-symbol{font-size:1em;line-height:1}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
+.gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;transition:transform .3s}
+.gallery img:hover{transform:scale(1.03)}
+.reviews-section{background:#111;overflow:hidden}
+.google-badge{display:inline-flex;align-items:center;gap:.75rem;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:.55rem 1.2rem;margin-bottom:1rem;font-size:.95rem}
+.google-badge .stars{color:#fbbc04;letter-spacing:2px}
+.google-badge a{color:var(--accent-light);font-weight:600}
+.reviews-track-wrap{overflow:hidden}
+.reviews-track{display:flex;gap:1.25rem;animation:reviews-scroll 40s linear infinite;width:max-content}
+.reviews-track:hover{animation-play-state:paused}
+@keyframes reviews-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.review-card{flex:0 0 300px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.4rem}
+.review-card .stars{color:#fbbc04;margin-bottom:.5rem;letter-spacing:1px}
+.review-card p{color:#ddd;font-size:.95rem;line-height:1.55;margin-bottom:.9rem;font-style:italic}
+.review-card .meta{font-size:.8rem;color:var(--muted)}
+.reviews-cta{text-align:center;margin-top:2rem}
+.map-wrap{border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+.map-wrap iframe{display:block;width:100%}
+.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+.location-info h3{font-size:1.4rem;margin-bottom:1rem}
+.location-info p{color:var(--muted);margin-bottom:.6rem}
+.location-info a,.location-info .phone{color:var(--accent-light)}
+.location-info .phone{font-size:1.15rem;font-weight:600}
+.hours-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.8rem;text-align:center;margin-top:1.5rem}
+.hours-box h4{display:block;font-size:1.3rem;margin-bottom:.3rem}
+.hours-box .time{color:var(--cream);font-size:1.1rem}
+.reservation-box{background:linear-gradient(135deg,#1a0a0a,#2a1010);border:1px solid var(--accent);border-radius:14px;padding:3rem 2rem;text-align:center;max-width:720px;margin:0 auto}
+.reservation-box h2{font-size:2rem;margin-bottom:.8rem;letter-spacing:2px}
+.reservation-box>p{color:#ccc;margin-bottom:1.5rem}
+.book-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem;text-align:left;margin-top:1.5rem}
+.book-form .full{grid-column:1/-1}
+.book-form label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:.35rem;letter-spacing:.5px}
+.book-form input,.book-form select,.book-form textarea{width:100%;background:#0e0e0e;border:1px solid var(--border);border-radius:6px;color:var(--text);padding:.7rem .85rem;font-size:.95rem;font-family:inherit}
+.book-form input:focus,.book-form select:focus,.book-form textarea:focus{outline:none;border-color:var(--accent-light)}
+.book-form textarea{min-height:80px;resize:vertical}
+.book-form button[type=submit]{grid-column:1/-1;background:var(--accent);color:#fff;border:none;border-radius:6px;padding:1rem;font-size:1.05rem;font-weight:600;cursor:pointer;transition:.25s;margin-top:.5rem}
+.book-form button[type=submit]:hover{background:var(--accent-bright)}
+.book-form button[type=submit]:disabled{opacity:.6;cursor:not-allowed}
+.book-msg{grid-column:1/-1;padding:.9rem 1rem;border-radius:6px;font-size:.95rem;display:none}
+.book-msg.ok{display:block;background:rgba(34,120,60,.2);border:1px solid rgba(80,180,100,.4);color:#b8e6c0}
+.book-msg.err{display:block;background:rgba(140,30,30,.25);border:1px solid rgba(200,80,80,.4);color:#f0b0b0}
+.book-alt{margin-top:1.75rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:.9rem}
+.book-alt a{color:var(--cream);font-weight:600}
+footer{background:#080808;padding:3.5rem 0 2.5rem;text-align:center;border-top:1px solid var(--border)}
+.slogan{font-size:1.3rem;letter-spacing:2px;margin-bottom:1rem}
+.slogan span{color:var(--accent-light)}
+footer a{color:var(--accent-light)}
+.cta-btn{background:var(--accent);color:#fff;padding:.9rem 1.8rem;border-radius:4px;font-weight:600;font-size:1rem;display:inline-block;transition:.25s}
+.cta-btn:hover{background:var(--accent-bright);transform:translateY(-2px)}
+@media(max-width:900px){.specials,.philosophy-grid,.location-grid,.menu-grid{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:repeat(2,1fr)}.nav-links{display:none}}
+@media(max-width:640px){.menu-grid,.book-form{grid-template-columns:1fr}.hero{padding-bottom:4vh;min-height:560px}.hero-content{padding-top:38vh}.hero-content h1{letter-spacing:2px}}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<a href="#" class="logo"><span class="wagyu">和牛</span> MEATHOLIC</a>
+<div class="nav-links">
+<a href="#craft">The Craft</a>
+<a href="#dishes">Menu</a>
+<a href="#specials">Specials</a>
+<a href="#gallery">Gallery</a>
+<a href="#reviews">Reviews</a>
+<a href="#location">Location</a>
+</div>
+<a href="#book" class="nav-cta">Reserve</a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<p class="tagline">Japanese & Australian Wagyu</p>
+<h1>MEATHOLIC</h1>
+<p>Top 1% cuts. Simple. Perfect.<br>Al Zeina, Al Raha Beach — Abu Dhabi</p>
+<div class="hero-ctas">
+<a href="#book" class="cta-btn">Reserve Your Table</a>
+<a href="#dishes" class="cta-btn" style="background:transparent;border:1px solid rgba(255,255,255,.4)">View Menu</a>
+</div>
+</div>
+</section>
+
+<section id="craft"><div class="container">
+<h2 class="section-title">The <span>Wagyu Craft</span></h2>
+<p class="section-sub">We believe great meat should be kept simple, cooked with care, and served the way it’s meant to be enjoyed.</p>
+<div class="philosophy-grid">
+<div class="philosophy-card"><p>“Wagyu does not need heavy seasoning. Salt is enough because the fat already carries most of the flavor.”</p><div class="source">— Meatholic Philosophy</div></div>
+<div class="philosophy-img"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/truffle-burger-table.jpg" alt="Truffle Wagyu Burger"></div>
+<div class="philosophy-img"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/doneness-chart.jpg" alt="Doneness guide"></div>
+<div class="philosophy-card"><p>“Wagyu needs gentle handling. Too much pressure or rough handling can damage its texture.”</p><div class="source">— Meatholic Philosophy</div></div>
+</div></div></section>
+
+<section id="dishes" style="background:#111"><div class="container">
+<h2 class="section-title">Our <span>Menu</span></h2>
+<p class="section-sub">Prices in <i class="dirham-symbol" aria-label="UAE Dirham"></i> (AED). Burgers show Australian / Japanese Wagyu options where available.</p>
+<div class="menu-cat"><h3>Starters & Salad</h3><div class="menu-grid">
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/feta-corn-1.jpg" alt="Greek Salad" loading="lazy"><div class="body"><div class="name">Greek Salad</div><div class="desc">Fresh cherry tomatoes, cucumbers, Kalamata olives, and feta cheese foam, topped with house-made special dressing.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 68</div></div></div>
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/sharing-board.jpg" alt="Caesar Salad" loading="lazy"><div class="body"><div class="name">Caesar Salad</div><div class="desc">Crisp romaine lettuce and garlic croutons, served with our signature Caesar dressing.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 56</div></div></div>
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/feta-corn-2.jpg" alt="Edamame" loading="lazy"><div class="body"><div class="name">Edamame</div><div class="desc">Steamed young soybeans, lightly salted or spicy, your choice.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 34</div></div></div>
+</div></div>
+<div class="menu-cat"><h3>Burgers</h3><div class="menu-grid">
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/burger-closeup.jpg" alt="Cheese Burger" loading="lazy"><div class="body"><div class="name">Cheese Burger</div><div class="desc">Classic Australian Wagyu beef patty with melted cheese, served with classic fries.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 78 / 114</div></div></div>
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/truffle-burger.jpg" alt="Truffle Burger" loading="lazy"><div class="body"><div class="name">Truffle Burger</div><div class="desc">Rich and savory Australian Wagyu patty with a hint of truffle, served with classic fries.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 86 / 122</div></div></div>
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/truffle-burger-table.jpg" alt="Mushroom Burger" loading="lazy"><div class="body"><div class="name">Mushroom Burger</div><div class="desc">Earthy mushroom twist on a juicy Australian Wagyu patty, served with classic fries.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 82 / 118</div></div></div>
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-burger-tasting.jpg" alt="Arugula Burger" loading="lazy"><div class="body"><div class="name">Arugula Burger</div><div class="desc">Bold and peppery Australian Wagyu patty burger with a gourmet touch, served with classic fries.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 82 / 118</div></div></div>
+</div></div>
+<div class="menu-cat"><h3>Main</h3><div class="menu-grid">
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/calamari.jpg" alt="Fish & Chips" loading="lazy"><div class="body"><div class="name">Fish & Chips</div><div class="desc">Crispy golden fish with fries and tartar sauce.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 130</div></div></div>
+</div></div>
+<div class="menu-cat"><h3>Steaks</h3><div class="menu-grid">
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-fries-1.jpg" alt="Striploin A3" loading="lazy"><div class="body"><div class="name">Striploin A3 (200g)</div><div class="desc">Elegant Wagyu cut with rich flavor, served with fries and salad.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 490</div></div></div>
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-fries-2.jpg" alt="Rib Eye A3" loading="lazy"><div class="body"><div class="name">Rib Eye A3 (250g)</div><div class="desc">Premium Japanese Wagyu experience, served with fries and salad.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 490</div></div></div>
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-fries-promo.jpg" alt="Striploin 3+" loading="lazy"><div class="body"><div class="name">Striploin 3+ (200g)</div><div class="desc">Lean and flavorful steak served with fries and salad.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 198</div></div></div>
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-sandwich.jpg" alt="Rib Eye 3+" loading="lazy"><div class="body"><div class="name">Rib Eye 3+ (250g)</div><div class="desc">Tender and marbled cut grilled to perfection, served with fries and salad.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 198</div></div></div>
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/premium-wagyu-boxes.jpg" alt="Abdullah's Steak" loading="lazy"><div class="body"><div class="name">Abdullah's Steak</div><div class="desc">Signature indulgent steak, bold and unforgettable, served with fries and salad.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 740</div></div></div>
+</div></div>
+<div class="menu-cat"><h3>Add-On</h3><div class="menu-grid">
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-fries-1.jpg" alt="Spicy Fries" loading="lazy"><div class="body"><div class="name">Spicy Fries</div><div class="desc">Fries with a fiery kick.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 8</div></div></div>
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-fries-2.jpg" alt="Parmesan Fries" loading="lazy"><div class="body"><div class="name">Parmesan Fries</div><div class="desc">Savory fries with a cheesy finish.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 8</div></div></div>
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-fries-promo.jpg" alt="Truffle Fries" loading="lazy"><div class="body"><div class="name">Truffle Fries</div><div class="desc">Gourmet fries with a hint of truffle.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 12</div></div></div>
+</div></div>
+<div class="menu-cat"><h3>Desserts</h3><div class="menu-grid">
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/tiramisu.jpg" alt="Tiramisu" loading="lazy"><div class="body"><div class="name">Tiramisu</div><div class="desc">Tiramisu balls served with mascarpone cream on the side.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 45</div></div></div>
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/affogato.jpg" alt="Crème Brûlée" loading="lazy"><div class="body"><div class="name">Crème Brûlée</div><div class="desc">Our family recipe, crafted with a touch of Emirati heritage.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 30</div></div></div>
+<div class="menu-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/affogato.jpg" alt="Ice Cream" loading="lazy"><div class="body"><div class="name">Ice Cream</div><div class="desc">One scoop of vanilla ice cream served with passion fruit sauce on the side.</div><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 15</div></div></div>
+</div></div>
+<p class="menu-note">Sauces & drinks available in-house · Prices in <i class="dirham-symbol" aria-label="UAE Dirham"></i> · Subject to change</p>
+</div></section>
+
+<section id="specials"><div class="container">
+<h2 class="section-title">Feasts & <span>Specials</span></h2>
+<p class="section-sub">Limited-time offers and group dining packages.</p>
+<div class="specials">
+<div class="special-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/feast-for-2.jpg" alt="Feast for 2"><div class="content"><h3>Meatholic Feast for 2</h3><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 199</div></div></div>
+<div class="special-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/feast-for-4.jpg" alt="Feast for 4"><div class="content"><h3>Meatholic Feast for 4</h3><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 350</div></div></div>
+<div class="special-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/weekly-specials.jpg" alt="Weekly Specials"><div class="content"><h3>Weekly Specials</h3><div class="price">See in-store</div></div></div>
+</div></div></section>
+
+<section id="gallery" style="background:#111"><div class="container">
+<h2 class="section-title">Gallery</h2>
+<p class="section-sub">A taste of the Meatholic experience.</p>
+<div class="gallery">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/truffle-burger-table.jpg" alt="Truffle burger">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/table-ready.jpg" alt="Table">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/steak-burger-tasting.jpg" alt="Tasting">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/open-hours.jpg" alt="Hours">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/come-try-it.jpg" alt="Come try">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/exterior.jpg" alt="Exterior">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/philosophy-seasoning.jpg" alt="Seasoning">
+<img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/philosophy-handling.jpg" alt="Handling">
+</div></div></section>
+
+<section id="reviews" class="reviews-section">
+<div class="container" style="text-align:center;margin-bottom:2rem">
+<h2 class="section-title">Guest <span>Reviews</span></h2>
+<div class="google-badge"><span class="stars">★★★★★</span><span>Google Reviews</span>
+<a href="https://www.google.com/maps/place/Meatholic/@24.4555297,54.6170522,17z/data=!4m8!3m7!1s0x3e5e4f007d428a9b:0xe0a2f164261a2f36!8m2!3d24.4551608!4d54.6172298!9m1!1b1!16s%2Fg%2F11mm0vrg6j?hl=en-GB&entry=ttu" target="_blank" rel="noopener">View on Maps →</a></div>
+<p class="section-sub" style="margin-bottom:0">Real reviews from Google Maps</p>
+</div>
+<div class="reviews-track-wrap"><div class="reviews-track">
+<div class="review-card"><div class="stars">★★★★★</div><p>“Had a wonderful dining experience. The burger was juicy and the steak tender and delicious. Highly recommended!”</p><div class="meta">— jhonalyn lipaopao · Google</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>“As a steak lover, I approve 10/10. The restaurant’s name really reflects how good their food is!”</p><div class="meta">— Lara · Google</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>“Perfect Food, No Further Comments.”</p><div class="meta">— Saeed Sameeh · Google</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>“Excellent steak experience! Cooked perfectly, tender, and full of flavor. Definitely a place I’ll be visiting again.”</p><div class="meta">— Nadeem · Google</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>“Best meal I've had in a while. The steak was cooked to perfection and the service was top-notch.”</p><div class="meta">— Gilbert Salunga · Google</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>“The kind of place that gets everything right — great food, great service, great vibe. Five stars, easily!”</p><div class="meta">— Pierre Ethan Vandenberg · Google</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>“Amazing food!!! Very attentive service! Highly recommend — would abandon anything just to get here!”</p><div class="meta">— Josh-Dave · Google</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>“Best Wagyu Steak in Town. Friendly and welcoming service, great ambience.”</p><div class="meta">— ailyn nuez · Google</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>“Had a wonderful dining experience. The burger was juicy and the steak tender and delicious. Highly recommended!”</p><div class="meta">— jhonalyn lipaopao · Google</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>“As a steak lover, I approve 10/10. The restaurant’s name really reflects how good their food is!”</p><div class="meta">— Lara · Google</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>“Perfect Food, No Further Comments.”</p><div class="meta">— Saeed Sameeh · Google</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>“Excellent steak experience! Cooked perfectly, tender, and full of flavor. Definitely a place I’ll be visiting again.”</p><div class="meta">— Nadeem · Google</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>“Best meal I've had in a while. The steak was cooked to perfection and the service was top-notch.”</p><div class="meta">— Gilbert Salunga · Google</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>“The kind of place that gets everything right — great food, great service, great vibe. Five stars, easily!”</p><div class="meta">— Pierre Ethan Vandenberg · Google</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>“Amazing food!!! Very attentive service! Highly recommend — would abandon anything just to get here!”</p><div class="meta">— Josh-Dave · Google</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>“Best Wagyu Steak in Town. Friendly and welcoming service, great ambience.”</p><div class="meta">— ailyn nuez · Google</div></div>
+</div></div>
+<div class="container reviews-cta">
+<a href="https://www.google.com/maps/place/Meatholic/@24.4555297,54.6170522,17z/data=!4m8!3m7!1s0x3e5e4f007d428a9b:0xe0a2f164261a2f36!8m2!3d24.4551608!4d54.6172298!9m1!1b1!16s%2Fg%2F11mm0vrg6j?hl=en-GB&entry=ttu" target="_blank" rel="noopener" class="cta-btn">Read all reviews on Google</a>
+<p style="margin-top:1rem;color:var(--muted);font-size:.9rem">Loved your meal? Leave a review on Google Maps.</p>
+</div>
+</section>
+
+<section id="location"><div class="container">
+<h2 class="section-title">Find <span>Us</span></h2>
+<p class="section-sub">Al Raha Blvd, Al Zeina — Abu Dhabi</p>
+<div class="location-grid">
+<div class="location-info">
+<h3>Meatholic</h3>
+<p><strong>Al Raha Blvd, Al Zeina, Al Raha Beach</strong><br>Abu Dhabi, United Arab Emirates</p>
+<p><a href="tel:+971501262191" class="phone">+971 50 126 2191</a><br>Call or WhatsApp for reservations</p>
+<div class="hours-box"><h4>Open Daily</h4><div class="time">2:00 PM – 12:00 AM</div></div>
+</div>
+<div class="map-wrap">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3631.8!2d54.6172298!3d24.4551608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e4f007d428a9b%3A0xe0a2f164261a2f36!2sMeatholic!5e0!3m2!1sen!2sae!4v1700000000000!5m2!1sen!2sae" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</div>
+</div></section>
+
+<section id="book" style="background:#111"><div class="container">
+<div class="reservation-box">
+<h2>RESERVE A TABLE</h2>
+<p>Fill in the form below. We accept reservations only — please book at least 1 hour ahead.</p>
+<form id="book-form" class="book-form">
+  <div><label for="guest_name">Full name *</label><input type="text" id="guest_name" name="guest_name" required placeholder="Your name" autocomplete="name"></div>
+  <div><label for="phone">Phone / WhatsApp *</label><input type="tel" id="phone" name="phone" required placeholder="+971 50 000 0000" autocomplete="tel"></div>
+  <div><label for="email">Email</label><input type="email" id="email" name="email" placeholder="optional" autocomplete="email"></div>
+  <div><label for="party_size">Party size *</label>
+    <select id="party_size" name="party_size" required>
+      <option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option>
+      <option value="5">5 guests</option><option value="6">6 guests</option><option value="7">7 guests</option><option value="8">8 guests</option>
+      <option value="10">10 guests</option><option value="12">12+ (we will confirm)</option>
+    </select>
+  </div>
+  <div><label for="reservation_date">Date *</label><input type="date" id="reservation_date" name="reservation_date" required></div>
+  <div><label for="reservation_time">Time *</label>
+    <select id="reservation_time" name="reservation_time" required>
+      <option value="">Select time</option>
+      <option value="14:00">2:00 PM</option><option value="14:30">2:30 PM</option><option value="15:00">3:00 PM</option><option value="15:30">3:30 PM</option>
+      <option value="16:00">4:00 PM</option><option value="16:30">4:30 PM</option><option value="17:00">5:00 PM</option><option value="17:30">5:30 PM</option>
+      <option value="18:00">6:00 PM</option><option value="18:30">6:30 PM</option><option value="19:00">7:00 PM</option><option value="19:30">7:30 PM</option>
+      <option value="20:00">8:00 PM</option><option value="20:30">8:30 PM</option><option value="21:00">9:00 PM</option><option value="21:30">9:30 PM</option>
+      <option value="22:00">10:00 PM</option><option value="22:30">10:30 PM</option><option value="23:00">11:00 PM</option>
+    </select>
+  </div>
+  <div class="full"><label for="notes">Special requests</label><textarea id="notes" name="notes" placeholder="Allergies, occasion, seating preference…"></textarea></div>
+  <div id="book-msg" class="book-msg" role="status"></div>
+  <button type="submit" id="book-submit">Request Reservation</button>
+</form>
+<div class="book-alt">Prefer to call or WhatsApp?<br>
+  <a href="tel:+971501262191">+971 50 126 2191</a> · <a href="https://wa.me/971501262191" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+</div></div></section>
+
+<footer><div class="container">
+<div class="slogan">STAY HUNGRY. STAY <span>MEATHOLIC</span>.</div>
+<p>Premium Wagyu Restaurant & Butcher · Al Raha Blvd, Al Zeina · Abu Dhabi</p>
+<p style="margin-top:.8rem"><a href="https://www.instagram.com/meatholicmeats/" target="_blank">@meatholicmeats</a> · <a href="tel:+971501262191">+971 50 126 2191</a></p>
+<p style="margin-top:1.5rem;font-size:.85rem;opacity:.6">Open daily 2 PM – 12 AM · Reservation only</p>
+</div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function(){
+  var links=document.querySelectorAll('.nav-links a[href^="#"]'),sections=[];
+  links.forEach(function(link){var id=link.getAttribute('href').slice(1),el=document.getElementById(id);if(el)sections.push({id:id,el:el})});
+  function setActive(id){links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+id)})}
+  function onScroll(){var offset=120,current=sections[0]&&sections[0].id;for(var i=0;i<sections.length;i++){if(sections[i].el.getBoundingClientRect().top-offset<=0)current=sections[i].id}if((window.innerHeight+window.scrollY)>=document.body.offsetHeight-80)current=sections[sections.length-1]&&sections[sections.length-1].id;if(current)setActive(current)}
+  window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('load',onScroll);onScroll();
+  links.forEach(function(link){link.addEventListener('click',function(){var id=link.getAttribute('href').slice(1);setTimeout(function(){setActive(id)},50)})});
+})();
+
+(function(){
+  var SUPABASE_URL = "https://cjgybbaofhddmijbviyv.supabase.co";
+  var SUPABASE_ANON_KEY = "sb_publishable_FPD8V7uI7g9gqSec7fL5Ug_yKqGeJg5";
+  var sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  var form = document.getElementById('book-form');
+  var msg = document.getElementById('book-msg');
+  var btn = document.getElementById('book-submit');
+  var dateInput = document.getElementById('reservation_date');
+  var today = new Date();
+  var yyyy = today.getFullYear();
+  var mm = String(today.getMonth()+1).padStart(2,'0');
+  var dd = String(today.getDate()).padStart(2,'0');
+  dateInput.min = yyyy + '-' + mm + '-' + dd;
+  dateInput.value = dateInput.min;
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    msg.className = 'book-msg';
+    msg.textContent = '';
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    var payload = {
+      guest_name: document.getElementById('guest_name').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      email: document.getElementById('email').value.trim() || null,
+      party_size: parseInt(document.getElementById('party_size').value, 10),
+      reservation_date: document.getElementById('reservation_date').value,
+      reservation_time: document.getElementById('reservation_time').value,
+      notes: document.getElementById('notes').value.trim() || null,
+      status: 'pending',
+      source: 'website'
+    };
+    try {
+      var res = await sb.from('reservations').insert([payload]);
+      if (res.error) throw res.error;
+      msg.className = 'book-msg ok';
+      msg.textContent = 'Request sent! We will confirm by phone or WhatsApp shortly.';
+      form.reset();
+      dateInput.value = dateInput.min;
+    } catch (err) {
+      console.error(err);
+      msg.className = 'book-msg err';
+      msg.textContent = 'Could not send request. Please call or WhatsApp +971 50 126 2191.';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Request Reservation';
+    }
+  });
+})();
+</script>
+</body>
+</html>
