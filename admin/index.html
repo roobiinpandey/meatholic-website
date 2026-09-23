@@ -52,7 +52,9 @@
           <div class="stat-card covers"><div class="label">Covers Today</div><div class="value" id="stat-covers">—</div></div>
         </div>
         <div class="toolbar">
-          <input type="date" id="filter-date" onchange="loadReservations()">
+          <input type="date" id="filter-date" onchange="loadReservations()" title="Pick a date, or clear for all">
+          <button type="button" class="btn-outline btn" onclick="filterResToday()">Today</button>
+          <button type="button" class="btn-outline btn" onclick="filterResAll()">All dates</button>
           <select id="filter-status" onchange="loadReservations()">
             <option value="">All Status</option>
             <option value="pending">Pending</option>
@@ -61,7 +63,7 @@
             <option value="completed">Completed</option>
             <option value="no_show">No-show</option>
           </select>
-          <input type="text" id="filter-search" placeholder="Search…" oninput="debounceSearch()" style="min-width:160px">
+          <input type="text" id="filter-search" placeholder="Search name or phone…" oninput="debounceSearch()" style="min-width:160px">
           <button class="btn-outline btn" onclick="exportCSV()">Export</button>
           <button class="btn-outline btn" onclick="loadReservations()">↻</button>
         </div>
