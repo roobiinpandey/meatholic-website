@@ -6,6 +6,13 @@
       "permanent": false
     }
   ],
+  "rewrites": [
+    { "source": "/favicon.ico", "destination": "/favicon.svg" },
+    { "source": "/favicon-32x32.png", "destination": "/favicon.svg" },
+    { "source": "/apple-touch-icon.png", "destination": "/favicon.svg" },
+    { "source": "/android-chrome-192x192.png", "destination": "/favicon.svg" },
+    { "source": "/android-chrome-512x512.png", "destination": "/favicon.svg" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
