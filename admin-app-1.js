@@ -30,10 +30,13 @@ function showDashboard(user) {
   document.getElementById("login-screen").style.display = "none";
   document.getElementById("dashboard").style.display = "block";
   document.getElementById("admin-email").textContent = user.email;
-  document.getElementById("current-date").textContent = new Date().toLocaleDateString("en-AE", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
-  // Leave date filter empty = show all reservations (past + future)
+  document.getElementById("current-date").textContent = new Date().toLocaleDateString("en-AE", {
+    timeZone: "Asia/Dubai",
+    weekday: "long", year: "numeric", month: "long", day: "numeric"
+  });
+  // Default: current service day (rolls over at 2:00 AM Dubai)
   const fd = document.getElementById("filter-date");
-  if (fd) fd.value = "";
+  if (fd) fd.value = getServiceDate();
   loadReservations();
 }
 
@@ -59,6 +62,28 @@ function openModal(html) {
 function closeModal() { document.getElementById("modal").classList.remove("show"); }
 document.getElementById("modal").addEventListener("click", e => { if (e.target.id === "modal") closeModal(); });
 
+/** Service day in Asia/Dubai: new cycle starts at 02:00 (shift ends 2 AM). */
+function getServiceDate(d) {
+  const now = d ? new Date(d) : new Date();
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Dubai",
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", hour12: false
+  }).formatToParts(now);
+  const get = (t) => parts.find(p => p.type === t)?.value;
+  let y = +get("year"), m = +get("month"), day = +get("day");
+  const hour = parseInt(get("hour"), 10);
+  // Before 2:00 AM → still previous service day
+  if (hour < 2) {
+    const prev = new Date(Date.UTC(y, m - 1, day));
+    prev.setUTCDate(prev.getUTCDate() - 1);
+    y = prev.getUTCFullYear();
+    m = prev.getUTCMonth() + 1;
+    day = prev.getUTCDate();
+  }
+  return y + "-" + String(m).padStart(2, "0") + "-" + String(day).padStart(2, "0");
+}
+
 async function loadReservations() {
   const loading = document.getElementById("res-loading");
   const table = document.getElementById("res-table");
@@ -66,12 +91,13 @@ async function loadReservations() {
   if (loading) loading.style.display = "block";
   if (table) table.style.display = "none";
   if (empty) empty.style.display = "none";
+  // Latest first: newest created, then later booking time
   let q = sb.from("reservations").select("*")
-    .order("reservation_date", { ascending: false })
-    .order("reservation_time", { ascending: true });
+    .order("created_at", { ascending: false })
+    .order("reservation_time", { ascending: false });
   const df = document.getElementById("filter-date")?.value;
   const sf = document.getElementById("filter-status")?.value;
-  // Empty date = all dates (old + new). Specific date = only that day.
+  // Specific date = that day's bookings only. Empty = all dates.
   if (df) q = q.eq("reservation_date", df);
   if (sf) q = q.eq("status", sf);
   const { data, error } = await q;
@@ -114,8 +140,11 @@ function renderRes() {
 }
 
 function updateStats() {
-  const today = new Date().toISOString().slice(0, 10);
-  const t = allRes.filter(r => r.reservation_date === today && !["cancelled", "no_show"].includes(r.status));
+  const serviceDay = getServiceDate();
+  const df = document.getElementById("filter-date")?.value;
+  // Stats for selected day, or service day when viewing all
+  const day = df || serviceDay;
+  const t = allRes.filter(r => r.reservation_date === day && !["cancelled", "no_show"].includes(r.status));
   document.getElementById("stat-today").textContent = t.length;
   document.getElementById("stat-pending").textContent = allRes.filter(r => r.status === "pending").length;
   document.getElementById("stat-confirmed").textContent = allRes.filter(r => r.status === "confirmed").length;
@@ -130,7 +159,7 @@ function openResModal(r) {
       <div class="form-group"><label>Phone *</label><input id="m-phone" value="${esc(r?.phone || "")}" required></div>
       <div class="form-group"><label>Email</label><input id="m-email" type="email" value="${esc(r?.email || "")}"></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem">
-        <div class="form-group"><label>Date *</label><input type="date" id="m-date" value="${r?.reservation_date || new Date().toISOString().slice(0,10)}" required></div>
+        <div class="form-group"><label>Date *</label><input type="date" id="m-date" value="${r?.reservation_date || getServiceDate()}" required></div>
         <div class="form-group"><label>Time *</label><input type="time" id="m-time" value="${(r?.reservation_time || "19:00").slice(0,5)}" required></div>
       </div>
       <div class="form-group"><label>Party Size *</label><input type="number" id="m-party" min="1" max="30" value="${r?.party_size || 2}" required></div>
@@ -186,7 +215,7 @@ function exportCSV() {
 
 function filterResToday() {
   const fd = document.getElementById("filter-date");
-  if (fd) fd.value = new Date().toISOString().slice(0, 10);
+  if (fd) fd.value = getServiceDate(); // service day (until 2 AM Dubai)
   loadReservations();
 }
 function filterResAll() {
