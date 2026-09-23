@@ -34,7 +34,7 @@ function showDashboard(user) {
     timeZone: "Asia/Dubai",
     weekday: "long", year: "numeric", month: "long", day: "numeric"
   });
-  // Default: current service day (rolls over at 2:00 AM Dubai)
+  // Default: current service day (open 2 PM – midnight; new cycle at midnight Dubai)
   const fd = document.getElementById("filter-date");
   if (fd) fd.value = getServiceDate();
   loadReservations();
@@ -62,26 +62,19 @@ function openModal(html) {
 function closeModal() { document.getElementById("modal").classList.remove("show"); }
 document.getElementById("modal").addEventListener("click", e => { if (e.target.id === "modal") closeModal(); });
 
-/** Service day in Asia/Dubai: new cycle starts at 02:00 (shift ends 2 AM). */
+/**
+ * Service day in Asia/Dubai.
+ * Restaurant hours: 2:00 PM – 12:00 AM (midnight).
+ * New reservation cycle starts at midnight Dubai time.
+ */
 function getServiceDate(d) {
   const now = d ? new Date(d) : new Date();
   const parts = new Intl.DateTimeFormat("en-CA", {
     timeZone: "Asia/Dubai",
-    year: "numeric", month: "2-digit", day: "2-digit",
-    hour: "2-digit", minute: "2-digit", hour12: false
+    year: "numeric", month: "2-digit", day: "2-digit"
   }).formatToParts(now);
   const get = (t) => parts.find(p => p.type === t)?.value;
-  let y = +get("year"), m = +get("month"), day = +get("day");
-  const hour = parseInt(get("hour"), 10);
-  // Before 2:00 AM → still previous service day
-  if (hour < 2) {
-    const prev = new Date(Date.UTC(y, m - 1, day));
-    prev.setUTCDate(prev.getUTCDate() - 1);
-    y = prev.getUTCFullYear();
-    m = prev.getUTCMonth() + 1;
-    day = prev.getUTCDate();
-  }
-  return y + "-" + String(m).padStart(2, "0") + "-" + String(day).padStart(2, "0");
+  return get("year") + "-" + get("month") + "-" + get("day");
 }
 
 async function loadReservations() {
@@ -215,7 +208,7 @@ function exportCSV() {
 
 function filterResToday() {
   const fd = document.getElementById("filter-date");
-  if (fd) fd.value = getServiceDate(); // service day (until 2 AM Dubai)
+  if (fd) fd.value = getServiceDate(); // service day (open 2 PM – midnight)
   loadReservations();
 }
 function filterResAll() {
