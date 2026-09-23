@@ -1,13 +1,17 @@
--- Fix: promote admin user + allow admin to manage CMS
+-- Fix: promote ALL admin users + allow admin to manage CMS
 -- Run this entire script in Supabase → SQL Editor → Run
+-- After running: both users must sign out and sign in again so the JWT picks up role=admin.
 
--- 1) Promote your login to admin role
+-- 1) Promote every admin login to role = admin
 update auth.users
 set raw_app_meta_data =
   coalesce(raw_app_meta_data, '{}'::jsonb) || '{"role":"admin"}'::jsonb
-where email = 'roobiinpandey@gmail.com';
+where lower(email) in (
+  'roobiinpandey@gmail.com',
+  'meatholic@mh.com'
+);
 
--- 2) is_admin() checks role OR your email (so admin always works)
+-- 2) is_admin() = JWT role admin OR known admin emails
 create or replace function public.is_admin()
 returns boolean
 language sql
@@ -17,7 +21,10 @@ set search_path = public
 as $$
   select coalesce(
     (auth.jwt() -> 'app_metadata' ->> 'role') = 'admin'
-    or lower(coalesce(auth.jwt() ->> 'email', '')) = 'roobiinpandey@gmail.com',
+    or lower(coalesce(auth.jwt() ->> 'email', '')) in (
+      'roobiinpandey@gmail.com',
+      'meatholic@mh.com'
+    ),
     false
   );
 $$;
