@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/admin",
+      "destination": "/admin/",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
