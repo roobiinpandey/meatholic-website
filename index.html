@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meatholic | Premium Wagyu Restaurant Abu Dhabi</title>
 <meta name="description" content="Meatholic - Japanese & Australian Wagyu restaurant in Al Zeina, Al Raha Beach, Abu Dhabi.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dirham/dist/css/dirham.css">
 <style>
 :root{--bg:#0c0c0c;--card:#161616;--accent:#6B1E1E;--accent-bright:#8B2A2A;--accent-light:#A63D3D;--text:#f5f5f5;--muted:#a0a0a0;--cream:#e8d5b7;--border:#2a2a2a}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -47,14 +48,16 @@ section{padding:5rem 0}
 .menu-card .body{padding:1.15rem 1.2rem 1.35rem;display:flex;flex-direction:column;flex:1}
 .menu-card .name{font-weight:600;font-size:1.05rem;margin-bottom:.35rem}
 .menu-card .desc{color:var(--muted);font-size:.88rem;line-height:1.5;flex:1;margin-bottom:.9rem}
-.menu-card .price{color:var(--cream);font-weight:700;font-size:1.1rem}
+.menu-card .price{color:var(--cream);font-weight:700;font-size:1.1rem;display:flex;align-items:center;gap:.3rem}
+.menu-card .price .dirham-symbol{font-size:1em;line-height:1}
 .menu-note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:1.5rem}
 .specials{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .special-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;text-align:center}
 .special-card img{width:100%;height:240px;object-fit:cover}
 .special-card .content{padding:1.3rem}
 .special-card h3{font-size:1.15rem;margin-bottom:.3rem}
-.special-card .price{color:var(--cream);font-size:1.4rem;font-weight:700}
+.special-card .price{color:var(--cream);font-size:1.4rem;font-weight:700;display:inline-flex;align-items:center;gap:.35rem;justify-content:center}
+.special-card .price .dirham-symbol{font-size:1em;line-height:1}
 .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
 .gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;transition:transform .3s}
 .gallery img:hover{transform:scale(1.03)}
@@ -139,7 +142,7 @@ footer a{color:var(--accent-light)}
 
 <section id="dishes" style="background:#111"><div class="container">
 <h2 class="section-title">Our <span>Menu</span></h2>
-<p class="section-sub">Prices in AED. Burgers show Australian / Japanese Wagyu options where available.</p>
+<p class="section-sub">Prices in <i class="dirham-symbol" aria-label="UAE Dirham"></i> (AED). Burgers show Australian / Japanese Wagyu options where available.</p>
 
 <div class="menu-cat">
 <h3>Starters & Salad</h3>
@@ -149,7 +152,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Greek Salad</div>
 <div class="desc">Fresh cherry tomatoes, cucumbers, Kalamata olives, and feta cheese foam, topped with house-made special dressing.</div>
-<div class="price">68</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 68</div>
 </div>
 </div>
 <div class="menu-card">
@@ -157,7 +160,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Caesar Salad</div>
 <div class="desc">Crisp romaine lettuce and garlic croutons, served with our signature Caesar dressing.</div>
-<div class="price">56</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 56</div>
 </div>
 </div>
 <div class="menu-card">
@@ -165,7 +168,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Edamame</div>
 <div class="desc">Steamed young soybeans, lightly salted or spicy, your choice.</div>
-<div class="price">34</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 34</div>
 </div>
 </div>
 </div>
@@ -179,7 +182,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Cheese Burger</div>
 <div class="desc">Classic Australian Wagyu beef patty with melted cheese, served with classic fries.</div>
-<div class="price">78 / 114</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 78 / 114</div>
 </div>
 </div>
 <div class="menu-card">
@@ -187,7 +190,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Truffle Burger</div>
 <div class="desc">Rich and savory Australian Wagyu patty with a hint of truffle, served with classic fries.</div>
-<div class="price">86 / 122</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 86 / 122</div>
 </div>
 </div>
 <div class="menu-card">
@@ -195,7 +198,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Mushroom Burger</div>
 <div class="desc">Earthy mushroom twist on a juicy Australian Wagyu patty, served with classic fries.</div>
-<div class="price">82 / 118</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 82 / 118</div>
 </div>
 </div>
 <div class="menu-card">
@@ -203,7 +206,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Arugula Burger</div>
 <div class="desc">Bold and peppery Australian Wagyu patty burger with a gourmet touch, served with classic fries.</div>
-<div class="price">82 / 118</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 82 / 118</div>
 </div>
 </div>
 </div>
@@ -217,7 +220,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Fish & Chips</div>
 <div class="desc">Crispy golden fish with fries and tartar sauce.</div>
-<div class="price">130</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 130</div>
 </div>
 </div>
 </div>
@@ -231,7 +234,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Striploin A3 (200g)</div>
 <div class="desc">Elegant Wagyu cut with rich flavor, served with fries and salad.</div>
-<div class="price">490</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 490</div>
 </div>
 </div>
 <div class="menu-card">
@@ -239,7 +242,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Rib Eye A3 (250g)</div>
 <div class="desc">Premium Japanese Wagyu experience, served with fries and salad.</div>
-<div class="price">490</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 490</div>
 </div>
 </div>
 <div class="menu-card">
@@ -247,7 +250,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Striploin 3+ (200g)</div>
 <div class="desc">Lean and flavorful steak served with fries and salad.</div>
-<div class="price">198</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 198</div>
 </div>
 </div>
 <div class="menu-card">
@@ -255,7 +258,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Rib Eye 3+ (250g)</div>
 <div class="desc">Tender and marbled cut grilled to perfection, served with fries and salad.</div>
-<div class="price">198</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 198</div>
 </div>
 </div>
 <div class="menu-card">
@@ -263,7 +266,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Abdullah's Steak</div>
 <div class="desc">Signature indulgent steak, bold and unforgettable, served with fries and salad.</div>
-<div class="price">740</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 740</div>
 </div>
 </div>
 </div>
@@ -277,7 +280,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Spicy Fries</div>
 <div class="desc">Fries with a fiery kick.</div>
-<div class="price">8</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 8</div>
 </div>
 </div>
 <div class="menu-card">
@@ -285,7 +288,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Parmesan Fries</div>
 <div class="desc">Savory fries with a cheesy finish.</div>
-<div class="price">8</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 8</div>
 </div>
 </div>
 <div class="menu-card">
@@ -293,7 +296,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Truffle Fries</div>
 <div class="desc">Gourmet fries with a hint of truffle.</div>
-<div class="price">12</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 12</div>
 </div>
 </div>
 </div>
@@ -307,7 +310,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Tiramisu</div>
 <div class="desc">Tiramisu balls served with mascarpone cream on the side.</div>
-<div class="price">45</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 45</div>
 </div>
 </div>
 <div class="menu-card">
@@ -315,7 +318,7 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Crème Brûlée</div>
 <div class="desc">Our family recipe, crafted with a touch of Emirati heritage.</div>
-<div class="price">30</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 30</div>
 </div>
 </div>
 <div class="menu-card">
@@ -323,21 +326,21 @@ footer a{color:var(--accent-light)}
 <div class="body">
 <div class="name">Ice Cream</div>
 <div class="desc">One scoop of vanilla ice cream served with passion fruit sauce on the side.</div>
-<div class="price">15</div>
+<div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 15</div>
 </div>
 </div>
 </div>
 </div>
 
-<p class="menu-note">Sauces & drinks available in-house · Prices in AED · Subject to change</p>
+<p class="menu-note">Sauces & drinks available in-house · Prices in <i class="dirham-symbol" aria-label="UAE Dirham"></i> · Subject to change</p>
 </div></section>
 
 <section id="specials"><div class="container">
 <h2 class="section-title">Feasts & <span>Specials</span></h2>
 <p class="section-sub">Limited-time offers and group dining packages.</p>
 <div class="specials">
-<div class="special-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/feast-for-2.jpg" alt="Feast for 2"><div class="content"><h3>Meatholic Feast for 2</h3><div class="price">199 د.إ</div></div></div>
-<div class="special-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/feast-for-4.jpg" alt="Feast for 4"><div class="content"><h3>Meatholic Feast for 4</h3><div class="price">350 د.إ</div></div></div>
+<div class="special-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/feast-for-2.jpg" alt="Feast for 2"><div class="content"><h3>Meatholic Feast for 2</h3><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 199</div></div></div>
+<div class="special-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/feast-for-4.jpg" alt="Feast for 4"><div class="content"><h3>Meatholic Feast for 4</h3><div class="price"><i class="dirham-symbol" aria-label="UAE Dirham"></i> 350</div></div></div>
 <div class="special-card"><img src="https://res.cloudinary.com/dzzonkdpm/image/upload/meatholic/weekly-specials.jpg" alt="Weekly Specials"><div class="content"><h3>Weekly Specials</h3><div class="price">See in-store</div></div></div>
 </div></div></section>
 
