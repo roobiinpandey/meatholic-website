@@ -11,16 +11,29 @@ Official website and admin panel for **Meatholic**, Al Zeina, Al Raha Beach.
 
 ```
 meatholic-website/
-├── index.html              # Public restaurant website
-├── images/                 # Food & venue photography
+├── index.html                 # Public restaurant website
+├── css/
+│   └── style.css              # Public styles
+├── js/
+│   └── main.js                # Public scripts (nav + reservations)
 ├── admin/
-│   ├── index.html          # Admin dashboard (login required)
-│   ├── admin.css           # Admin styles
-│   └── admin.js            # Admin app logic (Supabase)
+│   ├── index.html             # Admin dashboard (login + CMS)
+│   └── css/
+│       └── admin.css          # Admin styles
+├── admin-app-1.js             # Admin logic (auth, reservations)
+├── admin-app-2a.js            # Admin logic (menu/dishes)
+├── admin-app-2b.js            # Admin logic (gallery)
+├── admin-app-2c.js            # Admin logic (specials, settings)
+├── images/                    # Local food photos
 ├── supabase/
-│   └── schema.sql          # Database schema (run once in Supabase)
+│   ├── schema.sql             # Database schema
+│   └── seed.sql               # Seed data
+├── favicon.svg
+├── site.webmanifest
 └── README.md
 ```
+
+> Note: This is a single-page restaurant site (no separate `about.html`). Admin login and dashboard share `admin/index.html`.
 
 ---
 
@@ -30,39 +43,22 @@ meatholic-website/
 |-------|------------|
 | Frontend | Static HTML / CSS / JS |
 | Hosting | Vercel |
-| Database & Auth | Supabase (PostgreSQL + Auth) |
+| Database & Auth | Supabase |
 | CMS | Custom admin panel |
 
 ---
 
 ## Setup
 
-### 1. Supabase
-1. Create a project at supabase.com
-2. Open **SQL Editor** → run `supabase/schema.sql`
-3. **Authentication → Users** → create an admin user (Auto Confirm ON)
-4. Copy Project URL and anon key into `admin/index.html`
-
-### 2. Deploy
-Connect this repo to Vercel. No build step required.
-
-### 3. Admin access
-Open `/admin/` and sign in with the Supabase user you created.
-
----
-
-## Admin features
-
-- **Reservations** — create, confirm, cancel, WhatsApp guest, export CSV
-- **Menu** — add/edit/hide dishes with image URLs and prices
-- **Gallery** — manage gallery images
-- **Specials** — feasts and promotions
-- **Settings** — phone, hours, address, tagline, capacity
+1. Run `supabase/schema.sql` in the Supabase SQL Editor  
+2. Create an admin user under Authentication → Users  
+3. Deploy the repo to Vercel (no build step)  
+4. Open `/admin/` and sign in  
 
 ---
 
 ## Contact
 
-- Phone: +971 50 126 2191
-- Instagram: [@meatholicmeats](https://www.instagram.com/meatholicmeats/)
-- Location: Al Zeina, Al Raha Beach, Abu Dhabi
+- Phone: +971 50 126 2191  
+- Instagram: [@meatholicmeats](https://www.instagram.com/meatholicmeats/)  
+- Location: Al Zeina, Al Raha Beach, Abu Dhabi  
