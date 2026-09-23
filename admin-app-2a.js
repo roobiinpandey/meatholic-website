@@ -16,6 +16,7 @@ async function loadDishes() {
         <h3>${esc(d.name)}</h3>
         <p>${esc(d.description || "")}</p>
         ${d.price ? `<div class="price">${esc(d.price)}</div>` : ""}
+        <p style="font-size:0.75rem;color:var(--muted)">${esc(d.category || "")} · order ${d.sort_order ?? 0}${d.is_active ? "" : " · hidden"}</p>
         <div class="card-actions">
           <button class="btn btn-sm" onclick="editDish('${d.id}')">Edit</button>
           <button class="btn btn-sm btn-outline" onclick="toggleDish('${d.id}', ${!d.is_active})">${d.is_active ? "Hide" : "Show"}</button>
@@ -26,15 +27,16 @@ async function loadDishes() {
 }
 
 function openDishModal(d) {
+  const cats = ["starters","burgers","main","steaks","add-on","signature","sides","dessert","other"];
   openModal(`<h3>${d ? "Edit" : "Add"} Dish</h3>
     <form onsubmit="saveDish(event)">
       <input type="hidden" id="d-id" value="${d?.id || ""}">
       <div class="form-group"><label>Name *</label><input id="d-name" value="${esc(d?.name || "")}" required></div>
       <div class="form-group"><label>Description</label><textarea id="d-desc">${esc(d?.description || "")}</textarea></div>
-      <div class="form-group"><label>Price (e.g. 89 د.إ)</label><input id="d-price" value="${esc(d?.price || "")}"></div>
-      <div class="form-group"><label>Image URL</label><input id="d-img" value="${esc(d?.image_url || "")}" placeholder="https://…"><div class="hint">Paste a direct image link (Imgur, Cloudinary, or your site images)</div></div>
-      <div class="form-group"><label>Category</label>
-        <select id="d-cat">${["signature","sides","dessert","other"].map(c => `<option value="${c}" ${d?.category===c?"selected":""}>${c}</option>`).join("")}</select>
+      <div class="form-group"><label>Price (e.g. 68 or 78 / 114)</label><input id="d-price" value="${esc(d?.price || "")}"></div>
+      <div class="form-group"><label>Image URL</label><input id="d-img" value="${esc(d?.image_url || "")}" placeholder="https://…"><div class="hint">Paste a direct image link (Cloudinary, Imgur, etc.)</div></div>
+      <div class="form-group"><label>Category (website section)</label>
+        <select id="d-cat">${cats.map(c => `<option value="${c}" ${d?.category===c?"selected":""}>${c}</option>`).join("")}</select>
       </div>
       <div class="form-group"><label>Sort order</label><input type="number" id="d-sort" value="${d?.sort_order ?? 0}"></div>
       <div class="form-group"><label><input type="checkbox" id="d-active" ${d?.is_active !== false ? "checked" : ""}> Active (show on website)</label></div>
@@ -70,7 +72,7 @@ async function toggleDish(id, active) {
 }
 
 async function deleteDish(id) {
-  if (!confirm("Delete this dish?")) return;
+  if (!confirm("Delete this dish permanently?")) return;
   const { error } = await sb.from("dishes").delete().eq("id", id);
   if (error) return alert(error.message);
   loadDishes();
