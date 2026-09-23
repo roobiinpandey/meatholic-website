@@ -1,15 +1,66 @@
-(function(){
-  var links=document.querySelectorAll('.nav-links a[href^="#"]'),sections=[];
-  links.forEach(function(link){var id=link.getAttribute('href').slice(1),el=document.getElementById(id);if(el)sections.push({id:id,el:el})});
-  function setActive(id){links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+id)})}
-  function onScroll(){var offset=120,current=sections[0]&&sections[0].id;for(var i=0;i<sections.length;i++){if(sections[i].el.getBoundingClientRect().top-offset<=0)current=sections[i].id}if((window.innerHeight+window.scrollY)>=document.body.offsetHeight-80)current=sections[sections.length-1]&&sections[sections.length-1].id;if(current)setActive(current)}
-  window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('load',onScroll);onScroll();
-  links.forEach(function(link){link.addEventListener('click',function(){var id=link.getAttribute('href').slice(1);setTimeout(function(){setActive(id)},50)})});
+// Always show top of page on refresh / first load
+(function () {
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  function goTop() {
+    window.scrollTo(0, 0);
+  }
+  goTop();
+  window.addEventListener('load', goTop);
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) goTop();
+  });
 })();
 
-(function(){
-  var SUPABASE_URL = "https://cjgybbaofhddmijbviyv.supabase.co";
-  var SUPABASE_ANON_KEY = "sb_publishable_FPD8V7uI7g9gqSec7fL5Ug_yKqGeJg5";
+(function () {
+  var links = document.querySelectorAll('.nav-links a[href^="#"]'), sections = [];
+  links.forEach(function (link) {
+    var id = link.getAttribute('href').slice(1),
+      el = document.getElementById(id);
+    if (el) sections.push({ id: id, el: el });
+  });
+  function setActive(id) {
+    links.forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+    });
+  }
+  function onScroll() {
+    var offset = 120,
+      current = sections[0] && sections[0].id;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].el.getBoundingClientRect().top - offset <= 0) current = sections[i].id;
+    }
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 80)
+      current = sections[sections.length - 1] && sections[sections.length - 1].id;
+    if (current) setActive(current);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('load', onScroll);
+  onScroll();
+  links.forEach(function (link) {
+    link.addEventListener('click', function () {
+      var id = link.getAttribute('href').slice(1);
+      setTimeout(function () {
+        setActive(id);
+      }, 50);
+    });
+  });
+  // Logo → top of page
+  var logo = document.querySelector('header .logo');
+  if (logo) {
+    logo.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setActive('');
+      if (history.replaceState) history.replaceState(null, '', window.location.pathname);
+    });
+  }
+})();
+
+(function () {
+  var SUPABASE_URL = 'https://cjgybbaofhddmijbviyv.supabase.co';
+  var SUPABASE_ANON_KEY = 'sb_publishable_FPD8V7uI7g9gqSec7fL5Ug_yKqGeJg5';
   var sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   var form = document.getElementById('book-form');
   if (!form) return;
@@ -18,8 +69,8 @@
   var dateInput = document.getElementById('reservation_date');
   var today = new Date();
   var yyyy = today.getFullYear();
-  var mm = String(today.getMonth()+1).padStart(2,'0');
-  var dd = String(today.getDate()).padStart(2,'0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0');
+  var dd = String(today.getDate()).padStart(2, '0');
   dateInput.min = yyyy + '-' + mm + '-' + dd;
   dateInput.value = dateInput.min;
 
@@ -31,7 +82,7 @@
     msg.textContent = text;
   }
 
-  form.addEventListener('submit', async function(e){
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
     msg.className = 'book-msg';
     msg.textContent = '';
@@ -95,7 +146,9 @@
     try {
       var res = await sb.from('reservations').insert([payload]);
       if (res.error) throw res.error;
-      try { localStorage.setItem(LAST_SUBMIT_KEY, String(Date.now())); } catch (_) {}
+      try {
+        localStorage.setItem(LAST_SUBMIT_KEY, String(Date.now()));
+      } catch (_) {}
       msg.className = 'book-msg ok';
       msg.textContent = 'Request sent! We will confirm by phone or WhatsApp shortly.';
       form.reset();
