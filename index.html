@@ -121,7 +121,7 @@
 <p>Reservation only. We will confirm by phone or WhatsApp.</p>
 <form id="book-form" class="book-form">
   <div><label for="guest_name">Full name *</label><input type="text" id="guest_name" name="guest_name" required autocomplete="name" maxlength="120"></div>
-  <div><label for="phone">Phone *</label><input type="tel" id="phone" name="phone" required autocomplete="tel" maxlength="40"></div>
+  <div><label for="phone">Phone *</label><input type="tel" id="phone" name="phone" required autocomplete="tel" inputmode="numeric" placeholder="05XXXXXXXX" pattern="05[0-9]{8}" maxlength="15" title="UAE mobile: 05XXXXXXXX"></div>
   <div class="full"><label for="email">Email</label><input type="email" id="email" name="email" autocomplete="email" maxlength="120"></div>
   <div><label for="party_size">Party size *</label>
     <select id="party_size" name="party_size" required>
